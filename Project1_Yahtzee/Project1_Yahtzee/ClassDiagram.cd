@@ -15,10 +15,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Project1_Yahtzee.ScoreCard">
-    <Position X="5.75" Y="1.75" Width="1.5" />
+    <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ScoreCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project1_Yahtzee.DiceRoller">
+    <Position X="5.25" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAGAAIAAAAAAAAAAAAAAAAAAAAAAAGAAAA=</HashCode>
+      <FileName>DiceRoller.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Project1_Yahtzee.ScoringCategory">
