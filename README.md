@@ -14,8 +14,6 @@ __School:__ University of Michigan - Dearborn
 
 ### Assignments
 
-* [Assignment 1][AssignLink1]
-* [Assignment 2][AssignLink2]
+* [Project 1 - Yahtzee][AssignLink1]
 
-[AssignLink1]: http://github.com
-[AssignLink2]: http://github.com
+[AssignLink1]: https://github.com/EricCharnesky/CIS297-Winter2017-logicseed/tree/Project1_Yahtzee
