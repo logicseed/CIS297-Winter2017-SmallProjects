@@ -13,27 +13,27 @@ namespace Project1_Yahtzee
         /// <summary>
         /// Sum of dice showing face 1.
         /// </summary>
-        Aces,
+        Aces = 1,
         /// <summary>
         /// Sum of dice showing face 2.
         /// </summary>
-        Twos,
+        Twos = 2,
         /// <summary>
         /// Sum of dice showing face 3.
         /// </summary>
-        Threes,
+        Threes = 3,
         /// <summary>
         /// Sum of dice showing face 4.
         /// </summary>
-        Fours,
+        Fours = 4,
         /// <summary>
         /// Sum of dice showing face 5.
         /// </summary>
-        Fives,
+        Fives = 5,
         /// <summary>
         /// Sum of dice showing face 6.
         /// </summary>
-        Sixes,
+        Sixes = 6,
         /// <summary>
         /// Additional 35 points if the rest of the upper section totals 63 or more points.
         /// </summary>
