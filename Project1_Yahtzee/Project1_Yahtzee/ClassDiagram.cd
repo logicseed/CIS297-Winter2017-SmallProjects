@@ -21,5 +21,19 @@
       <FileName>ScoreCard.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Enum Name="Project1_Yahtzee.ScoringCategory">
+    <Position X="1.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAhAAAAQAEAAAQAAAIwAAAAQAAAgAAAgAAIA=</HashCode>
+      <FileName>ScoringCategory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Project1_Yahtzee.ScoringGroup">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScoringGroup.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
