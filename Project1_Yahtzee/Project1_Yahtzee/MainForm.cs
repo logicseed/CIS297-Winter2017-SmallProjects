@@ -175,6 +175,8 @@ namespace Project1_Yahtzee
             }
 
             game.RollDice();
+
+
             RefreshDice();
             RefreshScoreCard();
 
@@ -187,15 +189,27 @@ namespace Project1_Yahtzee
 
         private void scoreButton_Click(object sender, EventArgs e)
         {
-            ScoringCategory category = scoreButtonToCategory[(Button)sender];
+            var category = scoreButtonToCategory[(Button)sender];
             game.AcceptScore(category);
+
+            NextTurn();
+            if (game.IsOver())
+            {
+                var gameOver = new GameOverForm();
+                gameOver.DisplayScore(game.TotalScore);
+                NewGame();
+                gameOver.ShowDialog();
+            }
+        }
+
+        private void NextTurn()
+        {
             RefreshDice();
             RefreshScoreCard();
 
             DiceEnabled = false;
             rollDiceButton.Enabled = true;
             DisableScores();
-            rollsRemainLabel.Text = ROLLS_REMAIN_LABEL + game.RollsRemaining;
 
             UncheckDice();
         }

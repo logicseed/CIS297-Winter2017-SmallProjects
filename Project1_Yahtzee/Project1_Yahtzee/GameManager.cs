@@ -109,5 +109,31 @@ namespace Project1_Yahtzee
         {
             return scoreCard.IsScoreAccepted(category);
         }
+
+        public bool IsOver()
+        {
+            var isOver = true;
+
+            foreach (var category in ScoringCategories.All)
+            {
+                isOver &= scoreCard.IsScoreAccepted(category);
+                if (isOver == false) return isOver;
+            }
+
+            return isOver;
+        }
+
+        public int TotalScore
+        {
+            get
+            {
+                var totalScore = 0;
+                foreach (var category in ScoringCategories.All)
+                {
+                    totalScore += scoreCard.Scores[category];
+                }
+                return totalScore;
+            }
+        }
     }
 }
