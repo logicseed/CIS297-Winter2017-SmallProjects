@@ -43,9 +43,6 @@ namespace Project1_Yahtzee
             DiceEnabled = false;
             RefreshScoreCard();
             DisableScores();
-
-
-            ApplyScoreCardToScoreButtons();
         }
 
         private void RefreshDice()
@@ -95,20 +92,17 @@ namespace Project1_Yahtzee
                 {
                     scoreCategoryToButton[category].Text = game.RollScores[category].ToString();
                 }
-            }
-        }
 
-        private void ApplyScoreCardToScoreButtons()
-        {
-            //foreach (var category in ScoringCategories.All)
-            //{
-            //    scoreCategoryToButton[category].Text = game.scoreCard[category].ToString();
-            //    game.
-            //    if (scoreCard.IsScoreAccepted(category))
-            //    {
-            //        scoreCategoryToButton[category].Enabled = false;
-            //    }
-            //}
+                if ((category == ScoringCategory.Bonus && game.Scores[category] > 0) 
+                    || (category != ScoringCategory.Bonus && game.KeepScore(category)))
+                {
+                    scoreCategoryToButton[category].BackColor = Color.PaleGreen;
+                }
+                else
+                {
+                    scoreCategoryToButton[category].BackColor = Color.WhiteSmoke;
+                }
+            }
         }
 
         /// <summary>
@@ -187,6 +181,8 @@ namespace Project1_Yahtzee
             var haveRollsRemaining = game.RollsRemaining > 0;
             DiceEnabled = haveRollsRemaining;
             rollDiceButton.Enabled = haveRollsRemaining;
+
+            if (game.RollsRemaining == 0) UncheckDice();
         }
 
         private void scoreButton_Click(object sender, EventArgs e)
@@ -201,6 +197,11 @@ namespace Project1_Yahtzee
             DisableScores();
             rollsRemainLabel.Text = ROLLS_REMAIN_LABEL + game.RollsRemaining;
 
+            UncheckDice();
+        }
+
+        private void UncheckDice()
+        {
             for (int index = 0; index < diceCheckBoxes.Count; index++)
             {
                 diceCheckBoxes[index].Checked = false;

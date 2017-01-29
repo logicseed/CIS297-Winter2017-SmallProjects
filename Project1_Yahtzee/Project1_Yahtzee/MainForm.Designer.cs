@@ -66,23 +66,30 @@
             this.die3 = new System.Windows.Forms.CheckBox();
             this.die4 = new System.Windows.Forms.CheckBox();
             this.die5 = new System.Windows.Forms.CheckBox();
+            this.helpScoreCard = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.scoreTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // rollDiceButton
             // 
-            this.rollDiceButton.Location = new System.Drawing.Point(79, 116);
+            this.rollDiceButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.rollDiceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rollDiceButton.Font = new System.Drawing.Font("Arial Black", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rollDiceButton.ForeColor = System.Drawing.Color.Black;
+            this.rollDiceButton.Location = new System.Drawing.Point(12, 181);
             this.rollDiceButton.Name = "rollDiceButton";
-            this.rollDiceButton.Size = new System.Drawing.Size(113, 44);
+            this.rollDiceButton.Size = new System.Drawing.Size(424, 81);
             this.rollDiceButton.TabIndex = 5;
-            this.rollDiceButton.Text = "Roll Dice";
-            this.rollDiceButton.UseVisualStyleBackColor = true;
+            this.rollDiceButton.Text = "ROLL THE DICE!";
+            this.rollDiceButton.UseVisualStyleBackColor = false;
             this.rollDiceButton.Click += new System.EventHandler(this.rollDiceButton_Click);
             // 
             // rollsRemainLabel
             // 
             this.rollsRemainLabel.AutoSize = true;
-            this.rollsRemainLabel.Location = new System.Drawing.Point(210, 132);
+            this.rollsRemainLabel.Location = new System.Drawing.Point(12, 265);
             this.rollsRemainLabel.Name = "rollsRemainLabel";
             this.rollsRemainLabel.Size = new System.Drawing.Size(90, 13);
             this.rollsRemainLabel.TabIndex = 6;
@@ -95,7 +102,7 @@
             this.scoreTable.ColumnCount = 5;
             this.scoreTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.scoreTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.scoreTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.scoreTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.scoreTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.scoreTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.scoreTable.Controls.Add(this.upperSectionLabel, 0, 0);
@@ -129,7 +136,7 @@
             this.scoreTable.Controls.Add(this.yahtzeeButton, 4, 6);
             this.scoreTable.Controls.Add(this.chanceButton, 4, 7);
             this.scoreTable.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.scoreTable.Location = new System.Drawing.Point(30, 166);
+            this.scoreTable.Location = new System.Drawing.Point(458, 52);
             this.scoreTable.Name = "scoreTable";
             this.scoreTable.RowCount = 8;
             this.scoreTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -140,7 +147,7 @@
             this.scoreTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.scoreTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.scoreTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.scoreTable.Size = new System.Drawing.Size(344, 228);
+            this.scoreTable.Size = new System.Drawing.Size(292, 319);
             this.scoreTable.TabIndex = 7;
             // 
             // upperSectionLabel
@@ -151,15 +158,15 @@
             this.upperSectionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.upperSectionLabel.Location = new System.Drawing.Point(3, 8);
             this.upperSectionLabel.Name = "upperSectionLabel";
-            this.upperSectionLabel.Size = new System.Drawing.Size(121, 17);
+            this.upperSectionLabel.Size = new System.Drawing.Size(120, 17);
             this.upperSectionLabel.TabIndex = 0;
             this.upperSectionLabel.Text = "Upper Section";
             // 
             // acesLabel
             // 
-            this.acesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.acesLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.acesLabel.AutoSize = true;
-            this.acesLabel.Location = new System.Drawing.Point(3, 33);
+            this.acesLabel.Location = new System.Drawing.Point(12, 39);
             this.acesLabel.Name = "acesLabel";
             this.acesLabel.Size = new System.Drawing.Size(31, 13);
             this.acesLabel.TabIndex = 1;
@@ -167,9 +174,9 @@
             // 
             // twosLabel
             // 
-            this.twosLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.twosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.twosLabel.AutoSize = true;
-            this.twosLabel.Location = new System.Drawing.Point(3, 62);
+            this.twosLabel.Location = new System.Drawing.Point(10, 81);
             this.twosLabel.Name = "twosLabel";
             this.twosLabel.Size = new System.Drawing.Size(33, 13);
             this.twosLabel.TabIndex = 2;
@@ -177,9 +184,9 @@
             // 
             // threesLabel
             // 
-            this.threesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.threesLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.threesLabel.AutoSize = true;
-            this.threesLabel.Location = new System.Drawing.Point(3, 91);
+            this.threesLabel.Location = new System.Drawing.Point(3, 123);
             this.threesLabel.Name = "threesLabel";
             this.threesLabel.Size = new System.Drawing.Size(40, 13);
             this.threesLabel.TabIndex = 3;
@@ -187,9 +194,9 @@
             // 
             // foursLabel
             // 
-            this.foursLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.foursLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.foursLabel.AutoSize = true;
-            this.foursLabel.Location = new System.Drawing.Point(3, 120);
+            this.foursLabel.Location = new System.Drawing.Point(10, 165);
             this.foursLabel.Name = "foursLabel";
             this.foursLabel.Size = new System.Drawing.Size(33, 13);
             this.foursLabel.TabIndex = 4;
@@ -197,9 +204,9 @@
             // 
             // fivesLabel
             // 
-            this.fivesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fivesLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.fivesLabel.AutoSize = true;
-            this.fivesLabel.Location = new System.Drawing.Point(3, 149);
+            this.fivesLabel.Location = new System.Drawing.Point(11, 207);
             this.fivesLabel.Name = "fivesLabel";
             this.fivesLabel.Size = new System.Drawing.Size(32, 13);
             this.fivesLabel.TabIndex = 5;
@@ -207,9 +214,9 @@
             // 
             // sixesLabel
             // 
-            this.sixesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.sixesLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.sixesLabel.AutoSize = true;
-            this.sixesLabel.Location = new System.Drawing.Point(3, 178);
+            this.sixesLabel.Location = new System.Drawing.Point(11, 249);
             this.sixesLabel.Name = "sixesLabel";
             this.sixesLabel.Size = new System.Drawing.Size(32, 13);
             this.sixesLabel.TabIndex = 6;
@@ -217,9 +224,9 @@
             // 
             // bonusLabel
             // 
-            this.bonusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.bonusLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bonusLabel.AutoSize = true;
-            this.bonusLabel.Location = new System.Drawing.Point(3, 207);
+            this.bonusLabel.Location = new System.Drawing.Point(6, 291);
             this.bonusLabel.Name = "bonusLabel";
             this.bonusLabel.Size = new System.Drawing.Size(37, 13);
             this.bonusLabel.TabIndex = 7;
@@ -227,11 +234,13 @@
             // 
             // acesButton
             // 
+            this.acesButton.AutoSize = true;
             this.acesButton.Enabled = false;
             this.acesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.acesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.acesButton.Location = new System.Drawing.Point(49, 28);
             this.acesButton.Name = "acesButton";
-            this.acesButton.Size = new System.Drawing.Size(75, 23);
+            this.acesButton.Size = new System.Drawing.Size(74, 36);
             this.acesButton.TabIndex = 8;
             this.acesButton.Text = "99";
             this.acesButton.UseVisualStyleBackColor = false;
@@ -239,11 +248,13 @@
             // 
             // twosButton
             // 
+            this.twosButton.AutoSize = true;
             this.twosButton.Enabled = false;
             this.twosButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.twosButton.Location = new System.Drawing.Point(49, 57);
+            this.twosButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.twosButton.Location = new System.Drawing.Point(49, 70);
             this.twosButton.Name = "twosButton";
-            this.twosButton.Size = new System.Drawing.Size(75, 23);
+            this.twosButton.Size = new System.Drawing.Size(74, 36);
             this.twosButton.TabIndex = 9;
             this.twosButton.Text = "99";
             this.twosButton.UseVisualStyleBackColor = false;
@@ -251,11 +262,13 @@
             // 
             // threesButton
             // 
+            this.threesButton.AutoSize = true;
             this.threesButton.Enabled = false;
             this.threesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.threesButton.Location = new System.Drawing.Point(49, 86);
+            this.threesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.threesButton.Location = new System.Drawing.Point(49, 112);
             this.threesButton.Name = "threesButton";
-            this.threesButton.Size = new System.Drawing.Size(75, 23);
+            this.threesButton.Size = new System.Drawing.Size(74, 36);
             this.threesButton.TabIndex = 10;
             this.threesButton.Text = "99";
             this.threesButton.UseVisualStyleBackColor = false;
@@ -263,11 +276,13 @@
             // 
             // foursButton
             // 
+            this.foursButton.AutoSize = true;
             this.foursButton.Enabled = false;
             this.foursButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.foursButton.Location = new System.Drawing.Point(49, 115);
+            this.foursButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.foursButton.Location = new System.Drawing.Point(49, 154);
             this.foursButton.Name = "foursButton";
-            this.foursButton.Size = new System.Drawing.Size(75, 23);
+            this.foursButton.Size = new System.Drawing.Size(74, 36);
             this.foursButton.TabIndex = 11;
             this.foursButton.Text = "99";
             this.foursButton.UseVisualStyleBackColor = false;
@@ -275,11 +290,13 @@
             // 
             // fivesButton
             // 
+            this.fivesButton.AutoSize = true;
             this.fivesButton.Enabled = false;
             this.fivesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fivesButton.Location = new System.Drawing.Point(49, 144);
+            this.fivesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fivesButton.Location = new System.Drawing.Point(49, 196);
             this.fivesButton.Name = "fivesButton";
-            this.fivesButton.Size = new System.Drawing.Size(75, 23);
+            this.fivesButton.Size = new System.Drawing.Size(74, 36);
             this.fivesButton.TabIndex = 12;
             this.fivesButton.Text = "99";
             this.fivesButton.UseVisualStyleBackColor = false;
@@ -287,11 +304,13 @@
             // 
             // sixesButton
             // 
+            this.sixesButton.AutoSize = true;
             this.sixesButton.Enabled = false;
             this.sixesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sixesButton.Location = new System.Drawing.Point(49, 173);
+            this.sixesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sixesButton.Location = new System.Drawing.Point(49, 238);
             this.sixesButton.Name = "sixesButton";
-            this.sixesButton.Size = new System.Drawing.Size(75, 23);
+            this.sixesButton.Size = new System.Drawing.Size(74, 36);
             this.sixesButton.TabIndex = 13;
             this.sixesButton.Text = "99";
             this.sixesButton.UseVisualStyleBackColor = false;
@@ -299,11 +318,13 @@
             // 
             // bonusButton
             // 
+            this.bonusButton.AutoSize = true;
             this.bonusButton.Enabled = false;
             this.bonusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bonusButton.Location = new System.Drawing.Point(49, 202);
+            this.bonusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bonusButton.Location = new System.Drawing.Point(49, 280);
             this.bonusButton.Name = "bonusButton";
-            this.bonusButton.Size = new System.Drawing.Size(75, 23);
+            this.bonusButton.Size = new System.Drawing.Size(74, 36);
             this.bonusButton.TabIndex = 14;
             this.bonusButton.Text = "99";
             this.bonusButton.UseVisualStyleBackColor = false;
@@ -314,17 +335,17 @@
             this.scoreTable.SetColumnSpan(this.lowerSectionLabel, 2);
             this.lowerSectionLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lowerSectionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lowerSectionLabel.Location = new System.Drawing.Point(180, 8);
+            this.lowerSectionLabel.Location = new System.Drawing.Point(129, 8);
             this.lowerSectionLabel.Name = "lowerSectionLabel";
-            this.lowerSectionLabel.Size = new System.Drawing.Size(161, 17);
+            this.lowerSectionLabel.Size = new System.Drawing.Size(160, 17);
             this.lowerSectionLabel.TabIndex = 15;
             this.lowerSectionLabel.Text = "Lower Section";
             // 
             // threeOfAKindLabel
             // 
-            this.threeOfAKindLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.threeOfAKindLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.threeOfAKindLabel.AutoSize = true;
-            this.threeOfAKindLabel.Location = new System.Drawing.Point(180, 33);
+            this.threeOfAKindLabel.Location = new System.Drawing.Point(129, 39);
             this.threeOfAKindLabel.Name = "threeOfAKindLabel";
             this.threeOfAKindLabel.Size = new System.Drawing.Size(80, 13);
             this.threeOfAKindLabel.TabIndex = 16;
@@ -332,9 +353,9 @@
             // 
             // fourOfAKindLabel
             // 
-            this.fourOfAKindLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fourOfAKindLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.fourOfAKindLabel.AutoSize = true;
-            this.fourOfAKindLabel.Location = new System.Drawing.Point(180, 62);
+            this.fourOfAKindLabel.Location = new System.Drawing.Point(136, 81);
             this.fourOfAKindLabel.Name = "fourOfAKindLabel";
             this.fourOfAKindLabel.Size = new System.Drawing.Size(73, 13);
             this.fourOfAKindLabel.TabIndex = 17;
@@ -342,9 +363,9 @@
             // 
             // fullHouseLabel
             // 
-            this.fullHouseLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fullHouseLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.fullHouseLabel.AutoSize = true;
-            this.fullHouseLabel.Location = new System.Drawing.Point(180, 91);
+            this.fullHouseLabel.Location = new System.Drawing.Point(152, 123);
             this.fullHouseLabel.Name = "fullHouseLabel";
             this.fullHouseLabel.Size = new System.Drawing.Size(57, 13);
             this.fullHouseLabel.TabIndex = 18;
@@ -352,9 +373,9 @@
             // 
             // smallStraightLabel
             // 
-            this.smallStraightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.smallStraightLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.smallStraightLabel.AutoSize = true;
-            this.smallStraightLabel.Location = new System.Drawing.Point(180, 120);
+            this.smallStraightLabel.Location = new System.Drawing.Point(138, 165);
             this.smallStraightLabel.Name = "smallStraightLabel";
             this.smallStraightLabel.Size = new System.Drawing.Size(71, 13);
             this.smallStraightLabel.TabIndex = 19;
@@ -362,9 +383,9 @@
             // 
             // largeStraightLabel
             // 
-            this.largeStraightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.largeStraightLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.largeStraightLabel.AutoSize = true;
-            this.largeStraightLabel.Location = new System.Drawing.Point(180, 149);
+            this.largeStraightLabel.Location = new System.Drawing.Point(136, 207);
             this.largeStraightLabel.Name = "largeStraightLabel";
             this.largeStraightLabel.Size = new System.Drawing.Size(73, 13);
             this.largeStraightLabel.TabIndex = 20;
@@ -372,9 +393,9 @@
             // 
             // yahtzeeLabel
             // 
-            this.yahtzeeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.yahtzeeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.yahtzeeLabel.AutoSize = true;
-            this.yahtzeeLabel.Location = new System.Drawing.Point(180, 178);
+            this.yahtzeeLabel.Location = new System.Drawing.Point(163, 249);
             this.yahtzeeLabel.Name = "yahtzeeLabel";
             this.yahtzeeLabel.Size = new System.Drawing.Size(46, 13);
             this.yahtzeeLabel.TabIndex = 21;
@@ -382,9 +403,9 @@
             // 
             // chanceLabel
             // 
-            this.chanceLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chanceLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.chanceLabel.AutoSize = true;
-            this.chanceLabel.Location = new System.Drawing.Point(180, 207);
+            this.chanceLabel.Location = new System.Drawing.Point(165, 291);
             this.chanceLabel.Name = "chanceLabel";
             this.chanceLabel.Size = new System.Drawing.Size(44, 13);
             this.chanceLabel.TabIndex = 22;
@@ -392,11 +413,13 @@
             // 
             // threeOfAKindButton
             // 
+            this.threeOfAKindButton.AutoSize = true;
             this.threeOfAKindButton.Enabled = false;
             this.threeOfAKindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.threeOfAKindButton.Location = new System.Drawing.Point(266, 28);
+            this.threeOfAKindButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.threeOfAKindButton.Location = new System.Drawing.Point(215, 28);
             this.threeOfAKindButton.Name = "threeOfAKindButton";
-            this.threeOfAKindButton.Size = new System.Drawing.Size(75, 23);
+            this.threeOfAKindButton.Size = new System.Drawing.Size(74, 36);
             this.threeOfAKindButton.TabIndex = 23;
             this.threeOfAKindButton.Text = "99";
             this.threeOfAKindButton.UseVisualStyleBackColor = false;
@@ -404,11 +427,13 @@
             // 
             // fourOfAKindButton
             // 
+            this.fourOfAKindButton.AutoSize = true;
             this.fourOfAKindButton.Enabled = false;
             this.fourOfAKindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fourOfAKindButton.Location = new System.Drawing.Point(266, 57);
+            this.fourOfAKindButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fourOfAKindButton.Location = new System.Drawing.Point(215, 70);
             this.fourOfAKindButton.Name = "fourOfAKindButton";
-            this.fourOfAKindButton.Size = new System.Drawing.Size(75, 23);
+            this.fourOfAKindButton.Size = new System.Drawing.Size(74, 36);
             this.fourOfAKindButton.TabIndex = 24;
             this.fourOfAKindButton.Text = "99";
             this.fourOfAKindButton.UseVisualStyleBackColor = false;
@@ -416,11 +441,13 @@
             // 
             // fullHouseButton
             // 
+            this.fullHouseButton.AutoSize = true;
             this.fullHouseButton.Enabled = false;
             this.fullHouseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fullHouseButton.Location = new System.Drawing.Point(266, 86);
+            this.fullHouseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullHouseButton.Location = new System.Drawing.Point(215, 112);
             this.fullHouseButton.Name = "fullHouseButton";
-            this.fullHouseButton.Size = new System.Drawing.Size(75, 23);
+            this.fullHouseButton.Size = new System.Drawing.Size(74, 36);
             this.fullHouseButton.TabIndex = 25;
             this.fullHouseButton.Text = "99";
             this.fullHouseButton.UseVisualStyleBackColor = false;
@@ -428,11 +455,13 @@
             // 
             // smallStraightButton
             // 
+            this.smallStraightButton.AutoSize = true;
             this.smallStraightButton.Enabled = false;
             this.smallStraightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.smallStraightButton.Location = new System.Drawing.Point(266, 115);
+            this.smallStraightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.smallStraightButton.Location = new System.Drawing.Point(215, 154);
             this.smallStraightButton.Name = "smallStraightButton";
-            this.smallStraightButton.Size = new System.Drawing.Size(75, 23);
+            this.smallStraightButton.Size = new System.Drawing.Size(74, 36);
             this.smallStraightButton.TabIndex = 26;
             this.smallStraightButton.Text = "99";
             this.smallStraightButton.UseVisualStyleBackColor = false;
@@ -440,11 +469,13 @@
             // 
             // largeStraightButton
             // 
+            this.largeStraightButton.AutoSize = true;
             this.largeStraightButton.Enabled = false;
             this.largeStraightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.largeStraightButton.Location = new System.Drawing.Point(266, 144);
+            this.largeStraightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.largeStraightButton.Location = new System.Drawing.Point(215, 196);
             this.largeStraightButton.Name = "largeStraightButton";
-            this.largeStraightButton.Size = new System.Drawing.Size(75, 23);
+            this.largeStraightButton.Size = new System.Drawing.Size(74, 36);
             this.largeStraightButton.TabIndex = 27;
             this.largeStraightButton.Text = "99";
             this.largeStraightButton.UseVisualStyleBackColor = false;
@@ -452,11 +483,13 @@
             // 
             // yahtzeeButton
             // 
+            this.yahtzeeButton.AutoSize = true;
             this.yahtzeeButton.Enabled = false;
             this.yahtzeeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.yahtzeeButton.Location = new System.Drawing.Point(266, 173);
+            this.yahtzeeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yahtzeeButton.Location = new System.Drawing.Point(215, 238);
             this.yahtzeeButton.Name = "yahtzeeButton";
-            this.yahtzeeButton.Size = new System.Drawing.Size(75, 23);
+            this.yahtzeeButton.Size = new System.Drawing.Size(74, 36);
             this.yahtzeeButton.TabIndex = 28;
             this.yahtzeeButton.Text = "99";
             this.yahtzeeButton.UseVisualStyleBackColor = false;
@@ -464,11 +497,13 @@
             // 
             // chanceButton
             // 
+            this.chanceButton.AutoSize = true;
             this.chanceButton.Enabled = false;
             this.chanceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chanceButton.Location = new System.Drawing.Point(266, 202);
+            this.chanceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chanceButton.Location = new System.Drawing.Point(215, 280);
             this.chanceButton.Name = "chanceButton";
-            this.chanceButton.Size = new System.Drawing.Size(75, 23);
+            this.chanceButton.Size = new System.Drawing.Size(74, 36);
             this.chanceButton.TabIndex = 29;
             this.chanceButton.Text = "99";
             this.chanceButton.UseVisualStyleBackColor = false;
@@ -476,69 +511,137 @@
             // 
             // die1
             // 
-            this.die1.AutoSize = true;
+            this.die1.Appearance = System.Windows.Forms.Appearance.Button;
             this.die1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.die1.FlatAppearance.BorderSize = 0;
+            this.die1.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleGreen;
+            this.die1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.die1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.die1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.die1.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
-            this.die1.Location = new System.Drawing.Point(12, 12);
+            this.die1.Location = new System.Drawing.Point(12, 76);
             this.die1.Name = "die1";
-            this.die1.Padding = new System.Windows.Forms.Padding(5, 5, 2, 5);
-            this.die1.Size = new System.Drawing.Size(71, 88);
+            this.die1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.die1.Size = new System.Drawing.Size(80, 80);
             this.die1.TabIndex = 8;
             this.die1.UseVisualStyleBackColor = true;
             // 
             // die2
             // 
-            this.die2.AutoSize = true;
+            this.die2.Appearance = System.Windows.Forms.Appearance.Button;
             this.die2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.die2.FlatAppearance.BorderSize = 0;
+            this.die2.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleGreen;
+            this.die2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.die2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.die2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.die2.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
-            this.die2.Location = new System.Drawing.Point(89, 12);
+            this.die2.Location = new System.Drawing.Point(98, 76);
             this.die2.Name = "die2";
-            this.die2.Padding = new System.Windows.Forms.Padding(5, 5, 2, 5);
-            this.die2.Size = new System.Drawing.Size(71, 88);
+            this.die2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.die2.Size = new System.Drawing.Size(80, 80);
             this.die2.TabIndex = 9;
             this.die2.UseVisualStyleBackColor = true;
             // 
             // die3
             // 
-            this.die3.AutoSize = true;
+            this.die3.Appearance = System.Windows.Forms.Appearance.Button;
             this.die3.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.die3.FlatAppearance.BorderSize = 0;
+            this.die3.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleGreen;
+            this.die3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.die3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.die3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.die3.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
-            this.die3.Location = new System.Drawing.Point(166, 12);
+            this.die3.Location = new System.Drawing.Point(184, 76);
             this.die3.Name = "die3";
-            this.die3.Padding = new System.Windows.Forms.Padding(5, 5, 2, 5);
-            this.die3.Size = new System.Drawing.Size(71, 88);
+            this.die3.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.die3.Size = new System.Drawing.Size(80, 80);
             this.die3.TabIndex = 10;
             this.die3.UseVisualStyleBackColor = true;
             // 
             // die4
             // 
-            this.die4.AutoSize = true;
+            this.die4.Appearance = System.Windows.Forms.Appearance.Button;
             this.die4.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.die4.FlatAppearance.BorderSize = 0;
+            this.die4.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleGreen;
+            this.die4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.die4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.die4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.die4.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
-            this.die4.Location = new System.Drawing.Point(243, 12);
+            this.die4.Location = new System.Drawing.Point(270, 76);
             this.die4.Name = "die4";
-            this.die4.Padding = new System.Windows.Forms.Padding(5, 5, 2, 5);
-            this.die4.Size = new System.Drawing.Size(71, 88);
+            this.die4.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.die4.Size = new System.Drawing.Size(80, 80);
             this.die4.TabIndex = 11;
             this.die4.UseVisualStyleBackColor = true;
             // 
             // die5
             // 
-            this.die5.AutoSize = true;
+            this.die5.Appearance = System.Windows.Forms.Appearance.Button;
             this.die5.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.die5.FlatAppearance.BorderSize = 0;
+            this.die5.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleGreen;
+            this.die5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleGreen;
+            this.die5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.die5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.die5.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
-            this.die5.Location = new System.Drawing.Point(320, 12);
+            this.die5.Location = new System.Drawing.Point(356, 76);
             this.die5.Name = "die5";
-            this.die5.Padding = new System.Windows.Forms.Padding(5, 5, 2, 5);
-            this.die5.Size = new System.Drawing.Size(71, 88);
+            this.die5.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.die5.Size = new System.Drawing.Size(80, 80);
             this.die5.TabIndex = 12;
             this.die5.UseVisualStyleBackColor = true;
+            // 
+            // helpScoreCard
+            // 
+            this.helpScoreCard.BackColor = System.Drawing.Color.White;
+            this.helpScoreCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.helpScoreCard.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpScoreCard.Location = new System.Drawing.Point(12, 296);
+            this.helpScoreCard.Margin = new System.Windows.Forms.Padding(0);
+            this.helpScoreCard.Name = "helpScoreCard";
+            this.helpScoreCard.Padding = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.helpScoreCard.Size = new System.Drawing.Size(424, 75);
+            this.helpScoreCard.TabIndex = 14;
+            this.helpScoreCard.Text = "HELP\r\n\r\nClick a die to keep it between rolls.\r\nClick a score to write that score " +
+    "on your score card.\r\nRoll the dice to begin!";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1, -1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 60);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "DICE";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Arial Black", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(448, -1);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(321, 60);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "SCORECARD";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 416);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(766, 382);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.helpScoreCard);
             this.Controls.Add(this.die5);
             this.Controls.Add(this.die4);
             this.Controls.Add(this.die3);
@@ -547,8 +650,12 @@
             this.Controls.Add(this.scoreTable);
             this.Controls.Add(this.rollsRemainLabel);
             this.Controls.Add(this.rollDiceButton);
+            this.Controls.Add(this.label1);
+            this.HelpButton = true;
             this.Name = "MainForm";
-            this.Text = "Yahtzee!";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "YAHTZEE!";
             this.scoreTable.ResumeLayout(false);
             this.scoreTable.PerformLayout();
             this.ResumeLayout(false);
@@ -595,6 +702,9 @@
         private System.Windows.Forms.CheckBox die3;
         private System.Windows.Forms.CheckBox die4;
         private System.Windows.Forms.CheckBox die5;
+        private System.Windows.Forms.Label helpScoreCard;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
