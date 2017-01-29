@@ -188,5 +188,20 @@ namespace Project1_Yahtzee
             DiceEnabled = haveRollsRemaining;
             rollDiceButton.Enabled = haveRollsRemaining;
         }
+
+        private void scoreButton_Click(object sender, EventArgs e)
+        {
+            ScoringCategory category = scoreButtonToCategory[(Button)sender];
+            game.AcceptScore(category);
+            DiceEnabled = false;
+            rollDiceButton.Enabled = true;
+            DisableScores();
+            rollsRemainLabel.Text = ROLLS_REMAIN_LABEL + game.RollsRemaining;
+
+            for (int index = 0; index < diceCheckBoxes.Count; index++)
+            {
+                diceCheckBoxes[index].Checked = false;
+            }
+        }
     }
 }

@@ -59,11 +59,11 @@ namespace Project1_Yahtzee
         /// <param name="category">Score category to accept.</param>
         /// <param name="scores">Reference to current turn's dice scores.</param>
         /// <returns></returns>
-        public virtual bool AcceptScore(GameManager game, ScoreCard scoreCard, DiceRoller roller,
+        public virtual bool AcceptScore(GameManager game, ScoreCard scoreCard,
                                 ScoringCategory category, Dictionary<ScoringCategory, int> scores)
         {
             scoreCard.AcceptScore(category, scores[category]);
-            roller = new DiceRoller();
+            game.NextState(new FirstMoveState());
             return true;
         }
     }
@@ -78,7 +78,7 @@ namespace Project1_Yahtzee
             return false;
         }
 
-        public override bool AcceptScore(GameManager game, ScoreCard scoreCard, DiceRoller roller,
+        public override bool AcceptScore(GameManager game, ScoreCard scoreCard,
                                 ScoringCategory category, Dictionary<ScoringCategory, int> scores)
         {
             return false;

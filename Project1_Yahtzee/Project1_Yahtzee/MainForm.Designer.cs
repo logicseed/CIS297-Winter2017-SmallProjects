@@ -235,6 +235,7 @@
             this.acesButton.TabIndex = 8;
             this.acesButton.Text = "99";
             this.acesButton.UseVisualStyleBackColor = false;
+            this.acesButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // twosButton
             // 
@@ -246,6 +247,7 @@
             this.twosButton.TabIndex = 9;
             this.twosButton.Text = "99";
             this.twosButton.UseVisualStyleBackColor = false;
+            this.twosButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // threesButton
             // 
@@ -257,6 +259,7 @@
             this.threesButton.TabIndex = 10;
             this.threesButton.Text = "99";
             this.threesButton.UseVisualStyleBackColor = false;
+            this.threesButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // foursButton
             // 
@@ -268,6 +271,7 @@
             this.foursButton.TabIndex = 11;
             this.foursButton.Text = "99";
             this.foursButton.UseVisualStyleBackColor = false;
+            this.foursButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // fivesButton
             // 
@@ -279,6 +283,7 @@
             this.fivesButton.TabIndex = 12;
             this.fivesButton.Text = "99";
             this.fivesButton.UseVisualStyleBackColor = false;
+            this.fivesButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // sixesButton
             // 
@@ -290,6 +295,7 @@
             this.sixesButton.TabIndex = 13;
             this.sixesButton.Text = "99";
             this.sixesButton.UseVisualStyleBackColor = false;
+            this.sixesButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // bonusButton
             // 
@@ -394,6 +400,7 @@
             this.threeOfAKindButton.TabIndex = 23;
             this.threeOfAKindButton.Text = "99";
             this.threeOfAKindButton.UseVisualStyleBackColor = false;
+            this.threeOfAKindButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // fourOfAKindButton
             // 
@@ -405,6 +412,7 @@
             this.fourOfAKindButton.TabIndex = 24;
             this.fourOfAKindButton.Text = "99";
             this.fourOfAKindButton.UseVisualStyleBackColor = false;
+            this.fourOfAKindButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // fullHouseButton
             // 
@@ -416,6 +424,7 @@
             this.fullHouseButton.TabIndex = 25;
             this.fullHouseButton.Text = "99";
             this.fullHouseButton.UseVisualStyleBackColor = false;
+            this.fullHouseButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // smallStraightButton
             // 
@@ -427,6 +436,7 @@
             this.smallStraightButton.TabIndex = 26;
             this.smallStraightButton.Text = "99";
             this.smallStraightButton.UseVisualStyleBackColor = false;
+            this.smallStraightButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // largeStraightButton
             // 
@@ -438,6 +448,7 @@
             this.largeStraightButton.TabIndex = 27;
             this.largeStraightButton.Text = "99";
             this.largeStraightButton.UseVisualStyleBackColor = false;
+            this.largeStraightButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // yahtzeeButton
             // 
@@ -449,6 +460,7 @@
             this.yahtzeeButton.TabIndex = 28;
             this.yahtzeeButton.Text = "99";
             this.yahtzeeButton.UseVisualStyleBackColor = false;
+            this.yahtzeeButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // chanceButton
             // 
@@ -460,6 +472,7 @@
             this.chanceButton.TabIndex = 29;
             this.chanceButton.Text = "99";
             this.chanceButton.UseVisualStyleBackColor = false;
+            this.chanceButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // die1
             // 

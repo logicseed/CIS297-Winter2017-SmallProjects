@@ -83,7 +83,14 @@ namespace Project1_Yahtzee
 
         public bool AcceptScore(ScoringCategory category)
         {
-            return gameState.AcceptScore(this, scoreCard, roller, category, rollScores);
+            if (gameState.AcceptScore(this, scoreCard, category, rollScores))
+            {
+                roller = new DiceRoller();
+                rollScores = ScoreCalculator.CalculateDice(roller.SortedDice);
+                rollScores.Add(ScoringCategory.Bonus, ScoreCalculator.CalculateBonus(scoreCard.Scores));
+                return true;
+            }
+            return false;
         }
 
         public bool IsLocked(int die)
