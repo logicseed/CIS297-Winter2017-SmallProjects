@@ -95,5 +95,10 @@ namespace Project1_Yahtzee
         {
             return scoreCard.IsScoreAccepted(category);
         }
+
+        public bool KeepScore(ScoringCategory category)
+        {
+            return scoreCard.IsScoreAccepted(category);
+        }
     }
 }

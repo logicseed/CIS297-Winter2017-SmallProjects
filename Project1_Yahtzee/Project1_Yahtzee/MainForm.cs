@@ -40,7 +40,10 @@ namespace Project1_Yahtzee
             game = new GameManager();
 
             RefreshDice();
+            DiceEnabled = false;
             RefreshScoreCard();
+            DisableScores();
+
 
             ApplyScoreCardToScoreButtons();
         }
@@ -72,9 +75,27 @@ namespace Project1_Yahtzee
             }
         }
 
+        private void DisableScores()
+        {
+            foreach (var category in ScoringCategories.All)
+            {
+                scoreCategoryToButton[category].Enabled = false;
+            }
+        }
+
         private void RefreshScoreCard()
         {
-            
+            foreach (var category in ScoringCategories.All)
+            {
+                // fill permanent scores
+                scoreCategoryToButton[category].Text = game.Scores[category].ToString();
+                scoreCategoryToButton[category].Enabled = !game.KeepScore(category);
+                // fill turn scores
+                if (!game.KeepScore(category))
+                {
+                    scoreCategoryToButton[category].Text = game.RollScores[category].ToString();
+                }
+            }
         }
 
         private void ApplyScoreCardToScoreButtons()
@@ -153,8 +174,15 @@ namespace Project1_Yahtzee
 
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
+            // honor keep dice check boxes
+            for (int index = 0; index < diceCheckBoxes.Count; index++)
+            {
+                game.KeepDieRoll(index, diceCheckBoxes[index].Checked);
+            }
+
             game.RollDice();
             RefreshDice();
+            RefreshScoreCard();
 
             var haveRollsRemaining = game.RollsRemaining > 0;
             DiceEnabled = haveRollsRemaining;
