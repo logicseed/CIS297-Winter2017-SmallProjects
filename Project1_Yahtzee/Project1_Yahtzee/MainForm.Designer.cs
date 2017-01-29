@@ -77,6 +77,7 @@
             this.rollDiceButton.TabIndex = 5;
             this.rollDiceButton.Text = "Roll Dice";
             this.rollDiceButton.UseVisualStyleBackColor = true;
+            this.rollDiceButton.Click += new System.EventHandler(this.rollDiceButton_Click);
             // 
             // rollsRemainLabel
             // 
@@ -232,7 +233,7 @@
             this.acesButton.Name = "acesButton";
             this.acesButton.Size = new System.Drawing.Size(75, 23);
             this.acesButton.TabIndex = 8;
-            this.acesButton.Text = "0";
+            this.acesButton.Text = "99";
             this.acesButton.UseVisualStyleBackColor = false;
             // 
             // twosButton
@@ -243,7 +244,7 @@
             this.twosButton.Name = "twosButton";
             this.twosButton.Size = new System.Drawing.Size(75, 23);
             this.twosButton.TabIndex = 9;
-            this.twosButton.Text = "0";
+            this.twosButton.Text = "99";
             this.twosButton.UseVisualStyleBackColor = false;
             // 
             // threesButton
@@ -254,7 +255,7 @@
             this.threesButton.Name = "threesButton";
             this.threesButton.Size = new System.Drawing.Size(75, 23);
             this.threesButton.TabIndex = 10;
-            this.threesButton.Text = "0";
+            this.threesButton.Text = "99";
             this.threesButton.UseVisualStyleBackColor = false;
             // 
             // foursButton
@@ -265,7 +266,7 @@
             this.foursButton.Name = "foursButton";
             this.foursButton.Size = new System.Drawing.Size(75, 23);
             this.foursButton.TabIndex = 11;
-            this.foursButton.Text = "0";
+            this.foursButton.Text = "99";
             this.foursButton.UseVisualStyleBackColor = false;
             // 
             // fivesButton
@@ -276,7 +277,7 @@
             this.fivesButton.Name = "fivesButton";
             this.fivesButton.Size = new System.Drawing.Size(75, 23);
             this.fivesButton.TabIndex = 12;
-            this.fivesButton.Text = "0";
+            this.fivesButton.Text = "99";
             this.fivesButton.UseVisualStyleBackColor = false;
             // 
             // sixesButton
@@ -287,7 +288,7 @@
             this.sixesButton.Name = "sixesButton";
             this.sixesButton.Size = new System.Drawing.Size(75, 23);
             this.sixesButton.TabIndex = 13;
-            this.sixesButton.Text = "0";
+            this.sixesButton.Text = "99";
             this.sixesButton.UseVisualStyleBackColor = false;
             // 
             // bonusButton
@@ -298,7 +299,7 @@
             this.bonusButton.Name = "bonusButton";
             this.bonusButton.Size = new System.Drawing.Size(75, 23);
             this.bonusButton.TabIndex = 14;
-            this.bonusButton.Text = "0";
+            this.bonusButton.Text = "99";
             this.bonusButton.UseVisualStyleBackColor = false;
             // 
             // lowerSectionLabel
@@ -391,7 +392,7 @@
             this.threeOfAKindButton.Name = "threeOfAKindButton";
             this.threeOfAKindButton.Size = new System.Drawing.Size(75, 23);
             this.threeOfAKindButton.TabIndex = 23;
-            this.threeOfAKindButton.Text = "0";
+            this.threeOfAKindButton.Text = "99";
             this.threeOfAKindButton.UseVisualStyleBackColor = false;
             // 
             // fourOfAKindButton
@@ -402,7 +403,7 @@
             this.fourOfAKindButton.Name = "fourOfAKindButton";
             this.fourOfAKindButton.Size = new System.Drawing.Size(75, 23);
             this.fourOfAKindButton.TabIndex = 24;
-            this.fourOfAKindButton.Text = "0";
+            this.fourOfAKindButton.Text = "99";
             this.fourOfAKindButton.UseVisualStyleBackColor = false;
             // 
             // fullHouseButton
@@ -413,7 +414,7 @@
             this.fullHouseButton.Name = "fullHouseButton";
             this.fullHouseButton.Size = new System.Drawing.Size(75, 23);
             this.fullHouseButton.TabIndex = 25;
-            this.fullHouseButton.Text = "0";
+            this.fullHouseButton.Text = "99";
             this.fullHouseButton.UseVisualStyleBackColor = false;
             // 
             // smallStraightButton
@@ -424,7 +425,7 @@
             this.smallStraightButton.Name = "smallStraightButton";
             this.smallStraightButton.Size = new System.Drawing.Size(75, 23);
             this.smallStraightButton.TabIndex = 26;
-            this.smallStraightButton.Text = "0";
+            this.smallStraightButton.Text = "99";
             this.smallStraightButton.UseVisualStyleBackColor = false;
             // 
             // largeStraightButton
@@ -435,7 +436,7 @@
             this.largeStraightButton.Name = "largeStraightButton";
             this.largeStraightButton.Size = new System.Drawing.Size(75, 23);
             this.largeStraightButton.TabIndex = 27;
-            this.largeStraightButton.Text = "0";
+            this.largeStraightButton.Text = "99";
             this.largeStraightButton.UseVisualStyleBackColor = false;
             // 
             // yahtzeeButton
@@ -446,7 +447,7 @@
             this.yahtzeeButton.Name = "yahtzeeButton";
             this.yahtzeeButton.Size = new System.Drawing.Size(75, 23);
             this.yahtzeeButton.TabIndex = 28;
-            this.yahtzeeButton.Text = "0";
+            this.yahtzeeButton.Text = "99";
             this.yahtzeeButton.UseVisualStyleBackColor = false;
             // 
             // chanceButton
@@ -457,14 +458,13 @@
             this.chanceButton.Name = "chanceButton";
             this.chanceButton.Size = new System.Drawing.Size(75, 23);
             this.chanceButton.TabIndex = 29;
-            this.chanceButton.Text = "0";
+            this.chanceButton.Text = "99";
             this.chanceButton.UseVisualStyleBackColor = false;
             // 
             // die1
             // 
             this.die1.AutoSize = true;
             this.die1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.die1.Enabled = false;
             this.die1.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
             this.die1.Location = new System.Drawing.Point(12, 12);
             this.die1.Name = "die1";
@@ -477,7 +477,6 @@
             // 
             this.die2.AutoSize = true;
             this.die2.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.die2.Enabled = false;
             this.die2.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
             this.die2.Location = new System.Drawing.Point(89, 12);
             this.die2.Name = "die2";
@@ -490,7 +489,6 @@
             // 
             this.die3.AutoSize = true;
             this.die3.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.die3.Enabled = false;
             this.die3.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
             this.die3.Location = new System.Drawing.Point(166, 12);
             this.die3.Name = "die3";
@@ -503,7 +501,6 @@
             // 
             this.die4.AutoSize = true;
             this.die4.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.die4.Enabled = false;
             this.die4.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
             this.die4.Location = new System.Drawing.Point(243, 12);
             this.die4.Name = "die4";
@@ -516,7 +513,6 @@
             // 
             this.die5.AutoSize = true;
             this.die5.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.die5.Enabled = false;
             this.die5.Image = global::Project1_Yahtzee.Properties.Resources.DieFace0;
             this.die5.Location = new System.Drawing.Point(320, 12);
             this.die5.Name = "die5";

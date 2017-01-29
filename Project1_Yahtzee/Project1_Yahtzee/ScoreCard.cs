@@ -25,6 +25,8 @@ namespace Project1_Yahtzee
         /// </summary>
         private Dictionary<ScoringCategory, bool> scoreAccepted;
 
+        
+
         #endregion Private Fields
 
         #region Constructors
@@ -46,6 +48,18 @@ namespace Project1_Yahtzee
         }
 
         #endregion Constructors
+
+        #region Public Properties
+
+        public Dictionary<ScoringCategory, int> Scores
+        {
+            get
+            {
+                return scores;
+            }
+        }
+
+        #endregion Public Properties
 
         #region Public Methods
 

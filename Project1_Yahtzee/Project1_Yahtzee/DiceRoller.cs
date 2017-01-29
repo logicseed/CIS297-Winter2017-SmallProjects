@@ -84,7 +84,7 @@ namespace Project1_Yahtzee
         /// </remarks>
         public DiceRoller()
         {
-            this.random = new Random();
+            random = new Random();
             InitializeCollectionFields();
         }
         
@@ -107,9 +107,9 @@ namespace Project1_Yahtzee
         /// </summary>
         private void InitializeCollectionFields()
         {
-            this.dice = Enumerable.Repeat(0, NUM_DICE).ToList<int>();
-            this.sortedDice = Enumerable.Repeat(0, NUM_DICE).ToList<int>();
-            this.willKeepDice = Enumerable.Repeat(false, NUM_DICE).ToList<bool>();
+            dice = Enumerable.Repeat(0, NUM_DICE).ToList<int>();
+            sortedDice = Enumerable.Repeat(0, NUM_DICE).ToList<int>();
+            willKeepDice = Enumerable.Repeat(false, NUM_DICE).ToList<bool>();
         }
 
         #endregion Private Methods
@@ -117,22 +117,39 @@ namespace Project1_Yahtzee
         #region Public Properties
 
         /// <summary>
+        /// Returns the current unsorted die rolls.
+        /// </summary>
+        public List<int> Dice
+        {
+            get
+            {
+                return dice;
+            }
+        }
+
+        public bool WillKeep(int die)
+        {
+            return willKeepDice[die];
+        }
+
+
+        /// <summary>
         /// Gets the current list of dice in ascending order.
         /// </summary>
         /// <remarks>
         /// Has internal side-effects: <c>sortedDice</c> and <c>hasSorted</c> are modified.
         /// </remarks>
-        public List<int> Dice
+        public List<int> SortedDice
         {
             get
             {
-                if (this.hasSorted == false)
+                if (hasSorted == false)
                 {
-                    this.sortedDice = new List<int>(this.dice);
-                    this.sortedDice.Sort();
-                    this.hasSorted = true;
+                    sortedDice = new List<int>(dice);
+                    sortedDice.Sort();
+                    hasSorted = true;
                 }
-                return this.sortedDice;
+                return sortedDice;
             }
         }
 
@@ -143,7 +160,7 @@ namespace Project1_Yahtzee
         {
             get
             {
-                return MAX_ROLL_COUNT - this.rollCount;
+                return MAX_ROLL_COUNT - rollCount;
             }
         }
 
@@ -156,19 +173,26 @@ namespace Project1_Yahtzee
         /// </summary>
         public void RollDice()
         {
-            if (this.RollsRemaining <= 0) return;
+            if (RollsRemaining <= 0) return;
 
             for (int index = 0; index < this.dice.Count; index++)
             {
-                if (this.willKeepDice[index] == false)
+                if (willKeepDice[index] == false)
                 {
-                    this.dice[index] = this.random.Next(MIN_DIE_FACE, MAX_DIE_FACE + 1);
-                    this.hasSorted = false;
+                    dice[index] = random.Next(MIN_DIE_FACE, MAX_DIE_FACE + 1);
+                    hasSorted = false;
                 }
             }
 
-            this.rollCount++;
+            rollCount++;
         }
+
+        public void KeepDie(int die, bool keep)
+        {
+            willKeepDice[die] = keep;
+        }
+
+
 
         #endregion Public Methods
     }

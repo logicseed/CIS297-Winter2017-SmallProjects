@@ -16,38 +16,94 @@ namespace Project1_Yahtzee
 {
     public partial class MainForm : Form
     {
-        private List<Bitmap> dieFaceImages;
-        private List<CheckBox> diceCheckBoxes;
-        private Dictionary<ScoringCategory, Button> scoreButtons;
+        private const string ROLLS_REMAIN_LABEL = "Rolls remaining this turn: ";
 
-        private Random random;
-        private DiceRoller diceRoller;
-        private ScoreCard scoreCard;
+        private List<Bitmap> dieFaceBitmaps;
+        private List<CheckBox> diceCheckBoxes;
+        private Dictionary<ScoringCategory, Button> scoreCategoryToButton;
+        private Dictionary<Button, ScoringCategory> scoreButtonToCategory;
+
+        private GameManager game;
 
         public MainForm()
         {
             InitializeComponent();
-            InitializeDieFaceImages();
+            InitializeDieFaceBitmaps();
             InitializeDiceCheckBoxes();
             InitializeScoreButtons();
 
-            random = new Random();
-            diceRoller = new DiceRoller(random);
-            scoreCard = new ScoreCard();
+            NewGame();
         }
 
-
-        private void InitializeDieFaceImages()
+        private void NewGame()
         {
-            dieFaceImages = new List<Bitmap>();
+            game = new GameManager();
 
-            dieFaceImages.Add(global::Project1_Yahtzee.Properties.Resources.DieFace0);
-            dieFaceImages.Add(global::Project1_Yahtzee.Properties.Resources.DieFace1);
-            dieFaceImages.Add(global::Project1_Yahtzee.Properties.Resources.DieFace2);
-            dieFaceImages.Add(global::Project1_Yahtzee.Properties.Resources.DieFace3);
-            dieFaceImages.Add(global::Project1_Yahtzee.Properties.Resources.DieFace4);
-            dieFaceImages.Add(global::Project1_Yahtzee.Properties.Resources.DieFace5);
-            dieFaceImages.Add(global::Project1_Yahtzee.Properties.Resources.DieFace6);
+            RefreshDice();
+            RefreshScoreCard();
+
+            ApplyScoreCardToScoreButtons();
+        }
+
+        private void RefreshDice()
+        {
+            for (int index = 0; index < diceCheckBoxes.Count; index++)
+            {
+                diceCheckBoxes[index].Image = dieFaceBitmaps[game.Rolls[index]];
+                diceCheckBoxes[index].Checked = game.IsLocked(index);
+            }
+
+            rollsRemainLabel.Text = ROLLS_REMAIN_LABEL + game.RollsRemaining;
+        }
+
+        private bool DiceEnabled
+        {
+            get
+            {
+                return diceCheckBoxes[0].Enabled;
+            }
+
+            set
+            {
+                foreach (var dieBox in diceCheckBoxes)
+                {
+                    dieBox.Enabled = value;
+                }
+            }
+        }
+
+        private void RefreshScoreCard()
+        {
+            
+        }
+
+        private void ApplyScoreCardToScoreButtons()
+        {
+            //foreach (var category in ScoringCategories.All)
+            //{
+            //    scoreCategoryToButton[category].Text = game.scoreCard[category].ToString();
+            //    game.
+            //    if (scoreCard.IsScoreAccepted(category))
+            //    {
+            //        scoreCategoryToButton[category].Enabled = false;
+            //    }
+            //}
+        }
+
+        /// <summary>
+        /// Initializes a list of references to dice face images.
+        /// </summary>
+        private void InitializeDieFaceBitmaps()
+        {
+            dieFaceBitmaps = new List<Bitmap>();
+
+            dieFaceBitmaps.Add(Properties.Resources.DieFace0);
+            dieFaceBitmaps.Add(Properties.Resources.DieFace1);
+            dieFaceBitmaps.Add(Properties.Resources.DieFace2);
+            dieFaceBitmaps.Add(Properties.Resources.DieFace3);
+            dieFaceBitmaps.Add(Properties.Resources.DieFace4);
+            dieFaceBitmaps.Add(Properties.Resources.DieFace5);
+            dieFaceBitmaps.Add(Properties.Resources.DieFace6);
         }
 
         /// <summary>
@@ -70,22 +126,39 @@ namespace Project1_Yahtzee
         /// </summary>
         private void InitializeScoreButtons()
         {
-            scoreButtons = new Dictionary<ScoringCategory, Button>();
+            scoreCategoryToButton = new Dictionary<ScoringCategory, Button>();
 
-            scoreButtons.Add(ScoringCategory.Aces,          acesButton);
-            scoreButtons.Add(ScoringCategory.Twos,          twosButton);
-            scoreButtons.Add(ScoringCategory.Threes,        threesButton);
-            scoreButtons.Add(ScoringCategory.Fours,         foursButton);
-            scoreButtons.Add(ScoringCategory.Fives,         fivesButton);
-            scoreButtons.Add(ScoringCategory.Sixes,         sixesButton);
-            scoreButtons.Add(ScoringCategory.Bonus,         bonusButton);
-            scoreButtons.Add(ScoringCategory.ThreeOfAKind,  threeOfAKindButton);
-            scoreButtons.Add(ScoringCategory.FourOfAKind,   fourOfAKindButton);
-            scoreButtons.Add(ScoringCategory.FullHouse,     fullHouseButton);
-            scoreButtons.Add(ScoringCategory.SmallStraight, smallStraightButton);
-            scoreButtons.Add(ScoringCategory.LargeStraight, largeStraightButton);
-            scoreButtons.Add(ScoringCategory.Yahtzee,       yahtzeeButton);
-            scoreButtons.Add(ScoringCategory.Chance,        chanceButton);
+            scoreCategoryToButton.Add(ScoringCategory.Aces,          acesButton);
+            scoreCategoryToButton.Add(ScoringCategory.Twos,          twosButton);
+            scoreCategoryToButton.Add(ScoringCategory.Threes,        threesButton);
+            scoreCategoryToButton.Add(ScoringCategory.Fours,         foursButton);
+            scoreCategoryToButton.Add(ScoringCategory.Fives,         fivesButton);
+            scoreCategoryToButton.Add(ScoringCategory.Sixes,         sixesButton);
+            scoreCategoryToButton.Add(ScoringCategory.Bonus,         bonusButton);
+            scoreCategoryToButton.Add(ScoringCategory.ThreeOfAKind,  threeOfAKindButton);
+            scoreCategoryToButton.Add(ScoringCategory.FourOfAKind,   fourOfAKindButton);
+            scoreCategoryToButton.Add(ScoringCategory.FullHouse,     fullHouseButton);
+            scoreCategoryToButton.Add(ScoringCategory.SmallStraight, smallStraightButton);
+            scoreCategoryToButton.Add(ScoringCategory.LargeStraight, largeStraightButton);
+            scoreCategoryToButton.Add(ScoringCategory.Yahtzee,       yahtzeeButton);
+            scoreCategoryToButton.Add(ScoringCategory.Chance,        chanceButton);
+
+            scoreButtonToCategory = new Dictionary<Button, ScoringCategory>();
+
+            foreach (var category in ScoringCategories.All)
+            {
+                scoreButtonToCategory.Add(scoreCategoryToButton[category], category);
+            }
+        }
+
+        private void rollDiceButton_Click(object sender, EventArgs e)
+        {
+            game.RollDice();
+            RefreshDice();
+
+            var haveRollsRemaining = game.RollsRemaining > 0;
+            DiceEnabled = haveRollsRemaining;
+            rollDiceButton.Enabled = haveRollsRemaining;
         }
     }
 }

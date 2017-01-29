@@ -2,8 +2,43 @@
 // CIS297 - Winter 2017 - Professor Eric Charnesky
 // University of Michigan - Dearborn
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Project1_Yahtzee
 {
+    /// <summary>
+    /// Provides a list of scoring categories.
+    /// </summary>
+    /// <remarks>
+    /// Because we need to enumerate over the scoring categories frequently we will use a pseudo-
+    /// Singleton that will generate the list of scoring categories the first time it is requested
+    /// and then reuse that list for future requests.
+    /// </remarks>
+    public class ScoringCategories
+    {
+        private static List<ScoringCategory> allCategories;
+        public static List<ScoringCategory> All
+        {
+            get
+            {
+                if (allCategories == null)
+                {
+                    allCategories = new List<ScoringCategory>();
+
+                    foreach (var category in Enum.GetValues(typeof(ScoringCategory)).Cast<ScoringCategory>())
+                    {
+                        allCategories.Add(category);
+                    }
+                }
+
+                return allCategories;
+            }
+        }    
+    }
+
+
     /// <summary>
     /// The various methods of scoring a roll of the dice.
     /// </summary>
