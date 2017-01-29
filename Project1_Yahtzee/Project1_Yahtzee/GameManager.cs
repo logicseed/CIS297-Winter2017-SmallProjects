@@ -1,52 +1,17 @@
-﻿// Marc King - mjking@umich.edu
+﻿// Marc King - mjking@umich.edu 
 // CIS297 - Winter 2017 - Professor Eric Charnesky
 // University of Michigan - Dearborn
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Project1_Yahtzee
 {
+    /// <summary>
+    /// Manages the states of the game. 
+    /// </summary>
     public class GameManager
     {
-        private AbstractGameState gameState;
-        private ScoreCard scoreCard;
-        private DiceRoller roller;
-        private Dictionary<ScoringCategory, int> rollScores;
-
-        public Dictionary<ScoringCategory, int> Scores
-        {
-            get
-            {
-                return scoreCard.Scores;
-            }
-        }
-
-        public List<int> Rolls
-        {
-            get
-            {
-                return roller.Dice;
-            }
-        }
-
-        public Dictionary<ScoringCategory, int> RollScores
-        {
-            get
-            {
-                return rollScores;
-            }
-        }
-
-        public int RollsRemaining
-        {
-            get
-            {
-                return roller.RollsRemaining;
-            }
-        }
+        #region Public Constructors
 
         public GameManager()
         {
@@ -56,31 +21,79 @@ namespace Project1_Yahtzee
             rollScores = new Dictionary<ScoringCategory, int>(scoreCard.Scores);
         }
 
+        #endregion Public Constructors
+
+        #region Public Properties
+
         /// <summary>
-        /// Changes the state of the game
+        /// List of the current die rolls. 
         /// </summary>
-        /// <param name="gameState"></param>
-        public void NextState(AbstractGameState gameState)
+        public List<int> Rolls
         {
-            this.gameState = gameState;
-        }
-
-        public bool RollDice()
-        {
-            if (gameState.RollDice(this, roller) == true)
+            get
             {
-                rollScores = ScoreCalculator.CalculateDice(roller.SortedDice);
-                rollScores.Add(ScoringCategory.Bonus, ScoreCalculator.CalculateBonus(scoreCard.Scores));
-                return true;
+                return roller.Dice;
             }
-            return false;
         }
 
-        public bool KeepDieRoll(int die, bool keep)
+        /// <summary>
+        /// Dictionary of scores based on current die rolls by scoring category. 
+        /// </summary>
+        public Dictionary<ScoringCategory, int> RollScores
         {
-            return gameState.SetKeepDieRoll(this, roller, die, keep);
+            get
+            {
+                return rollScores;
+            }
         }
 
+        /// <summary>
+        /// How many rolls remain for the current turn. 
+        /// </summary>
+        public int RollsRemaining
+        {
+            get
+            {
+                return roller.RollsRemaining;
+            }
+        }
+
+        /// <summary>
+        /// Dictionary of current scores by scoring category. 
+        /// </summary>
+        public Dictionary<ScoringCategory, int> Scores
+        {
+            get
+            {
+                return scoreCard.Scores;
+            }
+        }
+
+        /// <summary>
+        /// Sum of all current scores. 
+        /// </summary>
+        public int TotalScore
+        {
+            get
+            {
+                var totalScore = 0;
+                foreach (var category in ScoringCategories.All)
+                {
+                    totalScore += scoreCard.Scores[category];
+                }
+                return totalScore;
+            }
+        }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
+        /// <summary>
+        /// Accepts the scoring category for the current roll onto the scorecard. 
+        /// </summary>
+        /// <param name="category"> Scoring category to accept. </param>
+        /// <returns> True is accepted; false otherwise. </returns>
         public bool AcceptScore(ScoringCategory category)
         {
             if (gameState.AcceptScore(this, scoreCard, category, rollScores))
@@ -95,21 +108,25 @@ namespace Project1_Yahtzee
             return false;
         }
 
-        public bool IsLocked(int die)
+        /// <summary>
+        /// Calculates scores based on next die roll. 
+        /// </summary>
+        /// <returns></returns>
+        public bool CalculateNextRollScores()
         {
-            return roller.WillKeep(die);
+            if (gameState.RollDice(this, roller) == true)
+            {
+                rollScores = ScoreCalculator.CalculateDice(roller.SortedDice);
+                rollScores.Add(ScoringCategory.Bonus, ScoreCalculator.CalculateBonus(scoreCard.Scores));
+                return true;
+            }
+            return false;
         }
 
-        public bool IsLocked(ScoringCategory category)
-        {
-            return scoreCard.IsScoreAccepted(category);
-        }
-
-        public bool KeepScore(ScoringCategory category)
-        {
-            return scoreCard.IsScoreAccepted(category);
-        }
-
+        /// <summary>
+        /// Determine if the game is over. 
+        /// </summary>
+        /// <returns> True if the game is over; false otherwise. </returns>
         public bool IsOver()
         {
             var isOver = true;
@@ -123,17 +140,70 @@ namespace Project1_Yahtzee
             return isOver;
         }
 
-        public int TotalScore
+        /// <summary>
+        /// Determine if the scorecard category has been accepted. 
+        /// </summary>
+        /// <param name="category"> Category to check. </param>
+        /// <returns> True if score category has been accepted; false otherwise. </returns>
+        public bool IsScoreAccepted(ScoringCategory category)
         {
-            get
-            {
-                var totalScore = 0;
-                foreach (var category in ScoringCategories.All)
-                {
-                    totalScore += scoreCard.Scores[category];
-                }
-                return totalScore;
-            }
+            return scoreCard.IsScoreAccepted(category);
         }
+
+        /// <summary>
+        /// Changes the state of the game 
+        /// </summary>
+        /// <param name="gameState"></param>
+        public void NextState(AbstractGameState gameState)
+        {
+            this.gameState = gameState;
+        }
+
+        /// <summary>
+        /// Sets whether or not a die roll will be kept. 
+        /// </summary>
+        /// <param name="die"> Zero index of die roll to set. </param>
+        /// <param name="keep"> If the die should be kept. </param>
+        /// <returns></returns>
+        public bool SetWillKeep(int die, bool keep)
+        {
+            return gameState.SetWillKeep(this, roller, die, keep);
+        }
+
+        /// <summary>
+        /// Determine if a die roll is marked to be kept. 
+        /// </summary>
+        /// <param name="die"> Zero index of the die roll. </param>
+        /// <returns> True if the die roll will be kept; false otherwise. </returns>
+        public bool WillKeep(int die)
+        {
+            return roller.WillKeep(die);
+        }
+
+        #endregion Public Methods
+
+        #region Private Fields
+
+        /// <summary>
+        /// Current state of the game. 
+        /// </summary>
+        private AbstractGameState gameState;
+
+        /// <summary>
+        /// Manages die rolling. 
+        /// </summary>
+        private DiceRoller roller;
+
+        /// <summary>
+        /// Scores based on the current rolls. 
+        /// </summary>
+        private Dictionary<ScoringCategory, int> rollScores;
+
+        /// <summary>
+        /// Current game's score card. 
+        /// </summary>
+        private ScoreCard scoreCard;
+
+        #endregion Private Fields
     }
 }
