@@ -72,11 +72,8 @@ namespace Project1_Yahtzee
         /// <param name="score">The value of the score.</param>
         public void AcceptScore(ScoringCategory category, int score)
         {
-            if (scoreAccepted[category] == false)
-            {
-                scores[category] = score;
-                scoreAccepted[category] = true;
-            }
+            scores[category] = score;
+            scoreAccepted[category] = true;
         }
 
         /// <summary>

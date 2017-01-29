@@ -87,7 +87,9 @@ namespace Project1_Yahtzee
             {
                 roller = new DiceRoller();
                 rollScores = ScoreCalculator.CalculateDice(roller.SortedDice);
+                scoreCard.AcceptScore(ScoringCategory.Bonus, ScoreCalculator.CalculateBonus(scoreCard.Scores));
                 rollScores.Add(ScoringCategory.Bonus, ScoreCalculator.CalculateBonus(scoreCard.Scores));
+
                 return true;
             }
             return false;

@@ -193,6 +193,9 @@ namespace Project1_Yahtzee
         {
             ScoringCategory category = scoreButtonToCategory[(Button)sender];
             game.AcceptScore(category);
+            RefreshDice();
+            RefreshScoreCard();
+
             DiceEnabled = false;
             rollDiceButton.Enabled = true;
             DisableScores();
