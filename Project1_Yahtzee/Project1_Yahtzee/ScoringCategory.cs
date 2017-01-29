@@ -11,33 +11,33 @@ namespace Project1_Yahtzee
     public enum ScoringCategory
     {
         /// <summary>
-        /// Sum of dice showing face 1.
-        /// </summary>
-        Aces = 1,
-        /// <summary>
-        /// Sum of dice showing face 2.
-        /// </summary>
-        Twos = 2,
-        /// <summary>
-        /// Sum of dice showing face 3.
-        /// </summary>
-        Threes = 3,
-        /// <summary>
-        /// Sum of dice showing face 4.
-        /// </summary>
-        Fours = 4,
-        /// <summary>
-        /// Sum of dice showing face 5.
-        /// </summary>
-        Fives = 5,
-        /// <summary>
-        /// Sum of dice showing face 6.
-        /// </summary>
-        Sixes = 6,
-        /// <summary>
         /// Additional 35 points if the rest of the upper section totals 63 or more points.
         /// </summary>
         Bonus,
+        /// <summary>
+        /// Sum of dice showing face 1.
+        /// </summary>
+        Aces,
+        /// <summary>
+        /// Sum of dice showing face 2.
+        /// </summary>
+        Twos,
+        /// <summary>
+        /// Sum of dice showing face 3.
+        /// </summary>
+        Threes,
+        /// <summary>
+        /// Sum of dice showing face 4.
+        /// </summary>
+        Fours,
+        /// <summary>
+        /// Sum of dice showing face 5.
+        /// </summary>
+        Fives,
+        /// <summary>
+        /// Sum of dice showing face 6.
+        /// </summary>
+        Sixes,
         /// <summary>
         /// Sum all dice if at least three show the same face.
         /// </summary>

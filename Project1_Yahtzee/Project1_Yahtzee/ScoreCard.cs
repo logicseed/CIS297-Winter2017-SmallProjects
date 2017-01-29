@@ -38,9 +38,7 @@ namespace Project1_Yahtzee
             this.scores = new Dictionary<ScoringCategory, int>();
             this.scoreAccepted = new Dictionary<ScoringCategory, bool>();
 
-            var scoringCategories = Enum.GetNames(typeof(ScoringCategory)).Cast<ScoringCategory>();
-
-            foreach (var category in scoringCategories)
+            foreach (var category in Enum.GetValues(typeof(ScoringCategory)).Cast<ScoringCategory>())
             {
                 this.scores.Add(category, 0);
                 this.scoreAccepted.Add(category, false);
