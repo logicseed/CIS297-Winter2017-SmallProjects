@@ -86,5 +86,19 @@ namespace Project1_Yahtzee
         }
 
         #endregion Public Methods
+
+        #region Public Properties
+
+        /// <summary>
+        /// Indexer to return the score of a scoring category.
+        /// </summary>
+        /// <param name="category">Scoring category to return the score for.</param>
+        /// <returns>The score of the scoring category.</returns>
+        public int this[ScoringCategory category]
+        {
+            get { return this.scores[category]; }
+        }
+
+        #endregion Public Properties
     }
 }
