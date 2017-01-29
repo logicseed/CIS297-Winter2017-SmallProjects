@@ -55,6 +55,11 @@ namespace Project1_Yahtzee
         private const int SMALL_STRAIGHT_SCORE = 30;
 
         /// <summary>
+        /// Number of dice required for a small straight.
+        /// </summary>
+        private const int SMALL_STRAIGHT_COUNT = 4;
+
+        /// <summary>
         /// Amount of points earned for the large straight score.
         /// </summary>
         private const int LARGE_STRAIGHT_SCORE = 40;
@@ -283,17 +288,16 @@ namespace Project1_Yahtzee
         /// <returns>The small straight score if the requirements are met; zero otherwise.</returns>
         private static int CalculateSmallStraight(List<int> dice)
         {
-            // Can only be faces 1-2-3-4, 2-3-4-5, or 3-4-5-6
-            // Can only be indices 0-1-2-3 or 1-2-3-4
-            for (int index = 0; index <= MAX_SMALL_STRAIGHT_INDEX; index++)
+            var distinct = dice.Distinct().ToList();
+            if (distinct.Count < SMALL_STRAIGHT_COUNT) return 0;
+
+            if (distinct[1] == distinct[0] + 1 &&
+                distinct[2] == distinct[0] + 2 &&
+                distinct[3] == distinct[0] + 3)
             {
-                if (dice[index + 1] == dice[index] + 1 &&
-                    dice[index + 2] == dice[index] + 2 &&
-                    dice[index + 3] == dice[index] + 3)
-                {
-                    return SMALL_STRAIGHT_SCORE;
-                }
+                return SMALL_STRAIGHT_SCORE;
             }
+
             return 0;
         }
 
