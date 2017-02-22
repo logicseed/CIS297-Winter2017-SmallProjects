@@ -4,7 +4,7 @@
 
 namespace Simulator
 {
-    enum CardSuit
+    public enum CardSuit
     {
         Clubs,
         Diamonds,

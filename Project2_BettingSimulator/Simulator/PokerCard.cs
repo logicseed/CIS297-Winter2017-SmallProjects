@@ -6,7 +6,7 @@ using System;
 
 namespace Simulator
 {
-    class PokerCard : IComparable<PokerCard>
+    public class PokerCard : IComparable<PokerCard>
     {
         public int Value { get; set; }
         public CardSuit Suit { get; set; }
