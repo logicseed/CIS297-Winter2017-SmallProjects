@@ -23,22 +23,22 @@ namespace Simulator
 
             var result = 0;
 
-            // Order by suit
-            if ((int)Suit > (int)other.Suit)
-            {
-                result = 1;
-            }
-            else if ((int)Suit < (int)other.Suit)
-            {
-                result = -1;
-            }
-
             // Order by value
             if (Value > other.Value)
             {
                 result = 1;
             }
             else if (Value < other.Value)
+            {
+                result = -1;
+            }
+
+            // Order by suit
+            if ((int)Suit > (int)other.Suit)
+            {
+                result = 1;
+            }
+            else if ((int)Suit < (int)other.Suit)
             {
                 result = -1;
             }
