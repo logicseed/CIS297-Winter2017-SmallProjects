@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Simulator
 {
-    class PokerDeck
+    public class PokerDeck
     {
         const int TOTAL_VALUES = 13;
 
