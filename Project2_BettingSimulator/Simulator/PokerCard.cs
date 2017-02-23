@@ -6,7 +6,7 @@ using System;
 
 namespace Simulator
 {
-    public class PokerCard : IComparable<PokerCard>
+    public class PokerCard : IComparable<PokerCard>, IEquatable<PokerCard>
     {
         public int Value { get; set; }
         public CardSuit Suit { get; set; }
@@ -44,6 +44,13 @@ namespace Simulator
             }
 
             return result;
+        }
+
+        public bool Equals(PokerCard other)
+        {
+            if (other == null) return false;
+
+            return this.Suit == other.Suit && this.Value == other.Value;
         }
     }
 }
