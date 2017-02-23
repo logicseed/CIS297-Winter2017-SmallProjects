@@ -12,9 +12,14 @@ namespace Simulator
 {
     public partial class MainForm : Form
     {
+        private BettingManager bettingManager;
+        private PowerBall powerBall;
+
+
         public MainForm()
         {
             InitializeComponent();
+            bettingManager = new BettingManager();
         }
     }
 }
