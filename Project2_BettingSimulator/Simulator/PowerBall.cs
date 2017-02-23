@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Simulator
 {
-    class PowerBall : IComparable<PowerBall>
+    public class PowerBall : IComparable<PowerBall>
     {
         private const int COUNT_WHITE = 5;
         private const int NUM_WHITE = 69;

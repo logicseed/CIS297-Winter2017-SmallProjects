@@ -9,7 +9,7 @@ namespace Simulator
 {
     class PokerHand : IComparable<PokerHand>
     {
-        private const int HAND_SIZE = 5;
+        public const int HAND_SIZE = 5;
 
         private List<PokerCard> cards;
         private PokerHandRank rank = PokerHandRank.Invalid;
