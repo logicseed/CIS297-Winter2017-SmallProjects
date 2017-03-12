@@ -4,6 +4,9 @@
 
 namespace TexasHoldem
 {
+    /// <summary>
+    /// Represents the rank of various poker hands.
+    /// </summary>
     public enum PokerHandRank
     {
         Invalid,
