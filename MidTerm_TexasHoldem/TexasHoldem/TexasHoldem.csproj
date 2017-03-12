@@ -55,9 +55,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PokerCard.cs" />
-    <Compile Include="PokerDeck.cs" />
+    <Compile Include="Card.cs" />
+    <Compile Include="CardDeck.cs" />
     <Compile Include="PokerHand.cs" />
+    <Compile Include="PokerHandCombinations.cs" />
     <Compile Include="PokerHandRank.cs" />
     <Compile Include="PokerManager.cs" />
     <Compile Include="Program.cs" />

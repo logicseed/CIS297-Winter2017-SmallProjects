@@ -3,25 +3,27 @@
 // University of Michigan - Dearborn
 
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace TexasHoldem
 {
     /// <summary>
     /// Provides easy access to the appropriate card image for use in the GUI.
+    /// The card 'images' are Unicode playing card characters.
     /// 
     /// This should allow us to write something like:
     /// 
-    /// something = cardImage[card.suit, card.face];
+    /// something = cardImage[card.Suit, card.Face];
     /// 
     /// </summary>
     public class CardImage
     {
-        private static Dictionary<CardSuit, Dictionary<CardFace, Bitmap>> images;
+        // This should really be a char instead of a string, but since the playing
+        // cards are in the extended Unicode, they won't fit in a 16-bit char.
+        private static Dictionary<CardSuit, Dictionary<CardFace, string>> images;
 
         // Singleton
         private static CardImage instance;
-        private CardImage() { InitializeImages(); }
+        private CardImage() { Initialize(); }
         public static CardImage Instance
         {
             get
@@ -35,82 +37,85 @@ namespace TexasHoldem
             }
         }
 
-        private static void InitializeImages()
+        /// <summary>
+        /// Initializes the card image dictionaries.
+        /// </summary>
+        private static void Initialize()
         {
             // Setup card images
-            images = new Dictionary<CardSuit, Dictionary<CardFace, Bitmap>>();
+            images = new Dictionary<CardSuit, Dictionary<CardFace, string>>();
 
-            images.Add(CardSuit.Clubs,    new Dictionary<CardFace, Bitmap>());
-            images.Add(CardSuit.Diamonds, new Dictionary<CardFace, Bitmap>());
-            images.Add(CardSuit.Hearts,   new Dictionary<CardFace, Bitmap>());
-            images.Add(CardSuit.Spades,   new Dictionary<CardFace, Bitmap>());
+            images.Add(CardSuit.Clubs,    new Dictionary<CardFace, string>());
+            images.Add(CardSuit.Diamonds, new Dictionary<CardFace, string>());
+            images.Add(CardSuit.Hearts,   new Dictionary<CardFace, string>());
+            images.Add(CardSuit.Spades,   new Dictionary<CardFace, string>());
 
             // Clubs
-            images[CardSuit.Clubs].Add(CardFace.Back,  Properties.Resources.Back);
-            images[CardSuit.Clubs].Add(CardFace.Ace,   Properties.Resources.C01);
-            images[CardSuit.Clubs].Add(CardFace.Two,   Properties.Resources.C02);
-            images[CardSuit.Clubs].Add(CardFace.Three, Properties.Resources.C03);
-            images[CardSuit.Clubs].Add(CardFace.Four,  Properties.Resources.C04);
-            images[CardSuit.Clubs].Add(CardFace.Five,  Properties.Resources.C05);
-            images[CardSuit.Clubs].Add(CardFace.Six,   Properties.Resources.C06);
-            images[CardSuit.Clubs].Add(CardFace.Seven, Properties.Resources.C07);
-            images[CardSuit.Clubs].Add(CardFace.Eight, Properties.Resources.C08);
-            images[CardSuit.Clubs].Add(CardFace.Nine,  Properties.Resources.C09);
-            images[CardSuit.Clubs].Add(CardFace.Ten,   Properties.Resources.C10);
-            images[CardSuit.Clubs].Add(CardFace.Jack,  Properties.Resources.C11);
-            images[CardSuit.Clubs].Add(CardFace.Queen, Properties.Resources.C12);
-            images[CardSuit.Clubs].Add(CardFace.King,  Properties.Resources.C13);
+            images[CardSuit.Clubs].Add(CardFace.Back,  "🂠");
+            images[CardSuit.Clubs].Add(CardFace.Ace,   "🃑");
+            images[CardSuit.Clubs].Add(CardFace.Two,   "🃒");
+            images[CardSuit.Clubs].Add(CardFace.Three, "🃓");
+            images[CardSuit.Clubs].Add(CardFace.Four,  "🃔");
+            images[CardSuit.Clubs].Add(CardFace.Five,  "🃕");
+            images[CardSuit.Clubs].Add(CardFace.Six,   "🃖");
+            images[CardSuit.Clubs].Add(CardFace.Seven, "🃗");
+            images[CardSuit.Clubs].Add(CardFace.Eight, "🃘");
+            images[CardSuit.Clubs].Add(CardFace.Nine,  "🃙");
+            images[CardSuit.Clubs].Add(CardFace.Ten,   "🃚");
+            images[CardSuit.Clubs].Add(CardFace.Jack,  "🃛");
+            images[CardSuit.Clubs].Add(CardFace.Queen, "🃝");
+            images[CardSuit.Clubs].Add(CardFace.King,  "🃞");
 
             // Diamonds
-            images[CardSuit.Diamonds].Add(CardFace.Back,  Properties.Resources.Back);
-            images[CardSuit.Diamonds].Add(CardFace.Ace,   Properties.Resources.D01);
-            images[CardSuit.Diamonds].Add(CardFace.Two,   Properties.Resources.D02);
-            images[CardSuit.Diamonds].Add(CardFace.Three, Properties.Resources.D03);
-            images[CardSuit.Diamonds].Add(CardFace.Four,  Properties.Resources.D04);
-            images[CardSuit.Diamonds].Add(CardFace.Five,  Properties.Resources.D05);
-            images[CardSuit.Diamonds].Add(CardFace.Six,   Properties.Resources.D06);
-            images[CardSuit.Diamonds].Add(CardFace.Seven, Properties.Resources.D07);
-            images[CardSuit.Diamonds].Add(CardFace.Eight, Properties.Resources.D08);
-            images[CardSuit.Diamonds].Add(CardFace.Nine,  Properties.Resources.D09);
-            images[CardSuit.Diamonds].Add(CardFace.Ten,   Properties.Resources.D10);
-            images[CardSuit.Diamonds].Add(CardFace.Jack,  Properties.Resources.D11);
-            images[CardSuit.Diamonds].Add(CardFace.Queen, Properties.Resources.D12);
-            images[CardSuit.Diamonds].Add(CardFace.King,  Properties.Resources.D13);
+            images[CardSuit.Diamonds].Add(CardFace.Back,  "🂠");
+            images[CardSuit.Diamonds].Add(CardFace.Ace,   "🃁");
+            images[CardSuit.Diamonds].Add(CardFace.Two,   "🃂");
+            images[CardSuit.Diamonds].Add(CardFace.Three, "🃃");
+            images[CardSuit.Diamonds].Add(CardFace.Four,  "🃄");
+            images[CardSuit.Diamonds].Add(CardFace.Five,  "🃅");
+            images[CardSuit.Diamonds].Add(CardFace.Six,   "🃆");
+            images[CardSuit.Diamonds].Add(CardFace.Seven, "🃇");
+            images[CardSuit.Diamonds].Add(CardFace.Eight, "🃈");
+            images[CardSuit.Diamonds].Add(CardFace.Nine,  "🃉");
+            images[CardSuit.Diamonds].Add(CardFace.Ten,   "🃊");
+            images[CardSuit.Diamonds].Add(CardFace.Jack,  "🃋");
+            images[CardSuit.Diamonds].Add(CardFace.Queen, "🃍");
+            images[CardSuit.Diamonds].Add(CardFace.King,  "🃎");
 
             // Hearts
-            images[CardSuit.Hearts].Add(CardFace.Back,  Properties.Resources.Back);
-            images[CardSuit.Hearts].Add(CardFace.Ace,   Properties.Resources.H01);
-            images[CardSuit.Hearts].Add(CardFace.Two,   Properties.Resources.H02);
-            images[CardSuit.Hearts].Add(CardFace.Three, Properties.Resources.H03);
-            images[CardSuit.Hearts].Add(CardFace.Four,  Properties.Resources.H04);
-            images[CardSuit.Hearts].Add(CardFace.Five,  Properties.Resources.H05);
-            images[CardSuit.Hearts].Add(CardFace.Six,   Properties.Resources.H06);
-            images[CardSuit.Hearts].Add(CardFace.Seven, Properties.Resources.H07);
-            images[CardSuit.Hearts].Add(CardFace.Eight, Properties.Resources.H08);
-            images[CardSuit.Hearts].Add(CardFace.Nine,  Properties.Resources.H09);
-            images[CardSuit.Hearts].Add(CardFace.Ten,   Properties.Resources.H10);
-            images[CardSuit.Hearts].Add(CardFace.Jack,  Properties.Resources.H11);
-            images[CardSuit.Hearts].Add(CardFace.Queen, Properties.Resources.H12);
-            images[CardSuit.Hearts].Add(CardFace.King,  Properties.Resources.H13);
+            images[CardSuit.Hearts].Add(CardFace.Back,  "🂠");
+            images[CardSuit.Hearts].Add(CardFace.Ace,   "🂱");
+            images[CardSuit.Hearts].Add(CardFace.Two,   "🂲");
+            images[CardSuit.Hearts].Add(CardFace.Three, "🂳");
+            images[CardSuit.Hearts].Add(CardFace.Four,  "🂴");
+            images[CardSuit.Hearts].Add(CardFace.Five,  "🂵");
+            images[CardSuit.Hearts].Add(CardFace.Six,   "🂶");
+            images[CardSuit.Hearts].Add(CardFace.Seven, "🂷");
+            images[CardSuit.Hearts].Add(CardFace.Eight, "🂸");
+            images[CardSuit.Hearts].Add(CardFace.Nine,  "🂹");
+            images[CardSuit.Hearts].Add(CardFace.Ten,   "🂺");
+            images[CardSuit.Hearts].Add(CardFace.Jack,  "🂻");
+            images[CardSuit.Hearts].Add(CardFace.Queen, "🂽");
+            images[CardSuit.Hearts].Add(CardFace.King,  "🂾");
 
             // Spades
-            images[CardSuit.Spades].Add(CardFace.Back,  Properties.Resources.Back);
-            images[CardSuit.Spades].Add(CardFace.Ace,   Properties.Resources.S01);
-            images[CardSuit.Spades].Add(CardFace.Two,   Properties.Resources.S02);
-            images[CardSuit.Spades].Add(CardFace.Three, Properties.Resources.S03);
-            images[CardSuit.Spades].Add(CardFace.Four,  Properties.Resources.S04);
-            images[CardSuit.Spades].Add(CardFace.Five,  Properties.Resources.S05);
-            images[CardSuit.Spades].Add(CardFace.Six,   Properties.Resources.S06);
-            images[CardSuit.Spades].Add(CardFace.Seven, Properties.Resources.S07);
-            images[CardSuit.Spades].Add(CardFace.Eight, Properties.Resources.S08);
-            images[CardSuit.Spades].Add(CardFace.Nine,  Properties.Resources.S09);
-            images[CardSuit.Spades].Add(CardFace.Ten,   Properties.Resources.S10);
-            images[CardSuit.Spades].Add(CardFace.Jack,  Properties.Resources.S11);
-            images[CardSuit.Spades].Add(CardFace.Queen, Properties.Resources.S12);
-            images[CardSuit.Spades].Add(CardFace.King,  Properties.Resources.S13);
+            images[CardSuit.Spades].Add(CardFace.Back,  "🂠");
+            images[CardSuit.Spades].Add(CardFace.Ace,   "🂡");
+            images[CardSuit.Spades].Add(CardFace.Two,   "🂢");
+            images[CardSuit.Spades].Add(CardFace.Three, "🂣");
+            images[CardSuit.Spades].Add(CardFace.Four,  "🂤");
+            images[CardSuit.Spades].Add(CardFace.Five,  "🂥");
+            images[CardSuit.Spades].Add(CardFace.Six,   "🂦");
+            images[CardSuit.Spades].Add(CardFace.Seven, "🂧");
+            images[CardSuit.Spades].Add(CardFace.Eight, "🂨");
+            images[CardSuit.Spades].Add(CardFace.Nine,  "🂩");
+            images[CardSuit.Spades].Add(CardFace.Ten,   "🂪");
+            images[CardSuit.Spades].Add(CardFace.Jack,  "🂫");
+            images[CardSuit.Spades].Add(CardFace.Queen, "🂭");
+            images[CardSuit.Spades].Add(CardFace.King,  "🂮");
         }
 
-        public Bitmap this[CardSuit suit, CardFace face]
+        public string this[CardSuit suit, CardFace face]
         {
             get
             {

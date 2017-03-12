@@ -4,11 +4,16 @@
 
 namespace TexasHoldem
 {
+    /// <summary>
+    /// Represents the suit of a playing card.
+    /// </summary>
     public enum CardSuit
     {
+        Invalid,
         Clubs,
         Diamonds,
         Hearts,
-        Spades
+        Spades,
+        TotalSuits = Spades
     }
 }

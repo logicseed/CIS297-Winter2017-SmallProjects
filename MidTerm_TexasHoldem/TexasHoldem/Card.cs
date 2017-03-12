@@ -6,39 +6,42 @@ using System;
 
 namespace TexasHoldem
 {
-    public class PokerCard : IComparable<PokerCard>, IEquatable<PokerCard>
+    /// <summary>
+    /// Represents a playing card.
+    /// </summary>
+    public class Card : IComparable<Card>, IEquatable<Card>
     {
-        public int Value { get; set; }
+        public CardFace Face { get; set; }
         public CardSuit Suit { get; set; }
 
-        public PokerCard(int value, CardSuit suit)
+        public Card(CardSuit suit, CardFace face)
         {
-            this.Value = value;
             this.Suit = suit;
+            this.Face = face;
         }
 
-        public int CompareTo(PokerCard other)
+        public int CompareTo(Card other)
         {
             if (other == null) return 1;
 
             var result = 0;
 
             // Order by value
-            if (Value > other.Value)
+            if (Face > other.Face)
             {
                 result = 1;
             }
-            else if (Value < other.Value)
+            else if (Face < other.Face)
             {
                 result = -1;
             }
 
             // Order by suit
-            if ((int)Suit > (int)other.Suit)
+            if (Suit > other.Suit)
             {
                 result = 1;
             }
-            else if ((int)Suit < (int)other.Suit)
+            else if (Suit < other.Suit)
             {
                 result = -1;
             }
@@ -46,11 +49,11 @@ namespace TexasHoldem
             return result;
         }
 
-        public bool Equals(PokerCard other)
+        public bool Equals(Card other)
         {
             if (other == null) return false;
 
-            return this.Suit == other.Suit && this.Value == other.Value;
+            return this.Suit == other.Suit && this.Face == other.Face;
         }
     }
 }

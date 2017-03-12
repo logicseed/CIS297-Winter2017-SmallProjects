@@ -44,12 +44,12 @@ namespace TexasHoldem
         {
             playerHand = new PokerHand();
             computerHand = new PokerHand();
-            var deck = new PokerDeck();
+            var deck = new CardDeck();
 
             for (int i = 0; i < PokerHand.HAND_SIZE; i++)
             {
-                playerHand.Add(deck.NextCard());
-                computerHand.Add(deck.NextCard());
+                playerHand.Add(deck.TakeCard());
+                computerHand.Add(deck.TakeCard());
             }
 
             if (playerHand.CompareTo(computerHand) == 1) playerWins = true;

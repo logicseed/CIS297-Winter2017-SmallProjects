@@ -4,9 +4,12 @@
 
 namespace TexasHoldem
 {
+    /// <summary>
+    /// Represents the face of a playing card.
+    /// </summary>
     public enum CardFace
     {
-        Back,
+        Back, // Sort of an invalid value since it isn't a face.
         Ace,
         Two,
         Three,
@@ -19,6 +22,7 @@ namespace TexasHoldem
         Ten,
         Jack,
         Queen,
-        King
+        King,
+        TotalFaces = King
     }
 }

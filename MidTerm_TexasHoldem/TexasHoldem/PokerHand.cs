@@ -7,23 +7,35 @@ using System.Collections.Generic;
 
 namespace TexasHoldem
 {
-    class PokerHand : IComparable<PokerHand>
+    public class PokerHand : IComparable<PokerHand>
     {
         public const int HAND_SIZE = 5;
 
-        private List<PokerCard> cards;
+        private List<Card> cards;
         private PokerHandRank rank = PokerHandRank.Invalid;
 
         public PokerHand()
         {
-            cards = new List<PokerCard>(HAND_SIZE);
+            cards = new List<Card>(HAND_SIZE);
         }
 
-        public void Add(PokerCard card)
+        public void Add(Card card)
         {
             if (card != null && cards.Count < HAND_SIZE)
             {
                 cards.Add(card);
+                cards.Sort();
+            }
+        }
+
+        public void Add(PokerHand hand)
+        {
+            if (cards.Count + hand.Cards.Count <= HAND_SIZE)
+            {
+                foreach (var card in hand.Cards)
+                {
+                    Add(card);
+                }
                 cards.Sort();
             }
         }
@@ -37,18 +49,24 @@ namespace TexasHoldem
             }
         }
 
-        public int GetHighestValue()
+        public List<Card> Cards { get => cards; }
+
+        public CardFace GetHighestFace()
         {
-            var highest = 0;
+            var highest = CardFace.Back;
+
             foreach (var card in cards)
             {
-                if (card.Value > highest) highest = card.Value;
+                if (card.Face > highest) highest = card.Face;
             }
+
             return highest;
         }
 
         public PokerHandRank CalculatePokerHandRank()
         {
+            if (cards.Count != HAND_SIZE) return PokerHandRank.Invalid;
+
             if (IsStraightFlush()) return PokerHandRank.StraightFlush;
 
             if (IsFourOfAKind()) return PokerHandRank.FourOfAKind;
@@ -72,18 +90,18 @@ namespace TexasHoldem
         public bool AreSequential()
         {
             // Check ace low sequential
-            if (cards[1].Value == cards[0].Value + 1 &&
-                cards[2].Value == cards[1].Value + 1 &&
-                cards[3].Value == cards[2].Value + 1 &&
-                cards[4].Value == cards[3].Value + 1) return true;
+            if ((int)cards[1].Face == (int)cards[0].Face + 1 &&
+                (int)cards[2].Face == (int)cards[1].Face + 1 &&
+                (int)cards[3].Face == (int)cards[2].Face + 1 &&
+                (int)cards[4].Face == (int)cards[3].Face + 1) return true;
 
             // Check ace high sequential
             if (HasAce())
             {
-                if (cards[2].Value == cards[1].Value + 1 &&
-                    cards[3].Value == cards[2].Value + 1 &&
-                    cards[4].Value == cards[3].Value + 1 &&
-                    cards[4].Value == 13) return true;
+                if ((int)cards[2].Face == (int)cards[1].Face + 1 &&
+                    (int)cards[3].Face == (int)cards[2].Face + 1 &&
+                    (int)cards[4].Face == (int)cards[3].Face + 1 &&
+                    (int)cards[4].Face == 13) return true;
             }
             return false;
         }
@@ -92,7 +110,7 @@ namespace TexasHoldem
         {
             foreach (var card in cards)
             {
-                if (card.Value == 1) return true;
+                if (card.Face == CardFace.Ace) return true;
             }
             return false;
         }
@@ -106,6 +124,7 @@ namespace TexasHoldem
             }
             return true;
         }
+
         public bool IsStraightFlush()
         {
             if (!AreSameSuit()) return false;
@@ -125,11 +144,11 @@ namespace TexasHoldem
             for (int i = 0; i < HAND_SIZE; i++)
             {
                 var count = 0;
-                var value = cards[i].Value;
+                var Face = cards[i].Face;
 
                 for (int j = 0; j < HAND_SIZE; j++)
                 {
-                    if (cards[i].Value == cards[j].Value) count++;
+                    if (cards[i].Face == cards[j].Face) count++;
                 }
 
                 if (count == multiple) return true;
@@ -139,35 +158,35 @@ namespace TexasHoldem
 
         public bool IsFullHouse()
         {
-            var value1 = 0;
+            var face1 = CardFace.Back;
             var count1 = 0;
-            var value2 = 0;
+            var face2 = CardFace.Back;
             var count2 = 0;
 
             foreach (var card in cards)
             {
-                if (card.Value == value1)
+                if (card.Face == face1)
                 {
                     count1++;
                     continue;
                 }
                 
-                if (card.Value == value2)
+                if (card.Face == face2)
                 {
                     count2++;
                     continue;
                 }
 
-                if (value1 == 0)
+                if (face1 == CardFace.Back)
                 {
-                    value1 = card.Value;
+                    face1 = card.Face;
                     count1++;
                     continue;
                 }
 
-                if (value2 == 0)
+                if (face2 == CardFace.Back)
                 {
-                    value2 = card.Value;
+                    face2 = card.Face;
                     count2++;
                     continue;
                 }
@@ -195,8 +214,8 @@ namespace TexasHoldem
 
         public bool IsTwoPair()
         {
-            var value1 = 0;
-            var value2 = 0;
+            var face1 = CardFace.Back;
+            var face2 = CardFace.Back;
 
             for (int i = 0; i < HAND_SIZE; i++)
             {
@@ -204,25 +223,25 @@ namespace TexasHoldem
                 {
                     if (i == j) continue;
 
-                    if (cards[i].Value == cards[j].Value)
+                    if (cards[i].Face == cards[j].Face)
                     {
-                        if (value1 == cards[i].Value || value2 == cards[i].Value) continue;
+                        if (face1 == cards[i].Face || face2 == cards[i].Face) continue;
 
-                        if (value1 == 0)
+                        if (face1 == CardFace.Back)
                         {
-                            value1 = cards[i].Value;
+                            face1 = cards[i].Face;
                         }
 
-                        if (value2 == 0)
+                        if (face2 == CardFace.Back)
                         {
-                            value2 = cards[i].Value;
+                            face2 = cards[i].Face;
                         }
                     }
 
                 }
             }
 
-            return (value1 > 0 && value2 > 0);
+            return (face1 != CardFace.Back && face2 != CardFace.Back);
         }
 
         public bool IsOnePair()
@@ -233,7 +252,7 @@ namespace TexasHoldem
                 {
                     if (i == j) continue;
 
-                    if (cards[i].Value == cards[j].Value) return true;
+                    if (cards[i].Face == cards[j].Face) return true;
                 }
             }
             return false;
@@ -249,24 +268,24 @@ namespace TexasHoldem
             switch (this.Rank)
             {
                 case PokerHandRank.StraightFlush:
-                    if (this.GetHighestValue() > other.GetHighestValue()) return 1;
-                    if (this.GetHighestValue() < other.GetHighestValue()) return -1;
+                    if (this.GetHighestFace() > other.GetHighestFace()) return 1;
+                    if (this.GetHighestFace() < other.GetHighestFace()) return -1;
                     break;
                 case PokerHandRank.FourOfAKind:
-                    if (this.GetValueOfMultiple(4) > other.GetValueOfMultiple(4)) return 1;
-                    if (this.GetValueOfMultiple(4) < other.GetValueOfMultiple(4)) return -1;
-                    if (this.GetValueOfMultiple(1) > other.GetValueOfMultiple(1)) return 1;
-                    if (this.GetValueOfMultiple(1) < other.GetValueOfMultiple(1)) return -1;
+                    if (this.GetFaceOfMultiple(4) > other.GetFaceOfMultiple(4)) return 1;
+                    if (this.GetFaceOfMultiple(4) < other.GetFaceOfMultiple(4)) return -1;
+                    if (this.GetFaceOfMultiple(1) > other.GetFaceOfMultiple(1)) return 1;
+                    if (this.GetFaceOfMultiple(1) < other.GetFaceOfMultiple(1)) return -1;
                     break;
                 case PokerHandRank.FullHouse:
-                    if (this.GetValueOfMultiple(3) > other.GetValueOfMultiple(3)) return 1;
-                    if (this.GetValueOfMultiple(3) < other.GetValueOfMultiple(3)) return -1;
-                    if (this.GetValueOfMultiple(2) > other.GetValueOfMultiple(2)) return 1;
-                    if (this.GetValueOfMultiple(2) < other.GetValueOfMultiple(2)) return -1;
+                    if (this.GetFaceOfMultiple(3) > other.GetFaceOfMultiple(3)) return 1;
+                    if (this.GetFaceOfMultiple(3) < other.GetFaceOfMultiple(3)) return -1;
+                    if (this.GetFaceOfMultiple(2) > other.GetFaceOfMultiple(2)) return 1;
+                    if (this.GetFaceOfMultiple(2) < other.GetFaceOfMultiple(2)) return -1;
                     break;
                 case PokerHandRank.Flush:
-                    var thisList = this.GetSortedListOfCardValues();
-                    var otherList = other.GetSortedListOfCardValues();
+                    var thisList = this.GetSortedListOfCardFaces();
+                    var otherList = other.GetSortedListOfCardFaces();
                     for (int i = 0; i < thisList.Count; i++)
                     {
                         if (thisList[i] > otherList[i]) return 1;
@@ -276,8 +295,8 @@ namespace TexasHoldem
                 case PokerHandRank.Straight:
                     if (this.HasAce() && !other.HasAce()) return 1;
                     if (!this.HasAce() && other.HasAce()) return -1;
-                    if (this.GetHighestValue() > other.GetHighestValue()) return 1;
-                    if (this.GetHighestValue() < other.GetHighestValue()) return -1;
+                    if (this.GetHighestFace() > other.GetHighestFace()) return 1;
+                    if (this.GetHighestFace() < other.GetHighestFace()) return -1;
                     break;
                 case PokerHandRank.ThreeOfAKind:
                     var thisRanks = this.GetThreeOfAKindRanks();
@@ -310,8 +329,8 @@ namespace TexasHoldem
                     if (this.HasAce() && !other.HasAce()) return 1;
                     if (!this.HasAce() && other.HasAce()) return -1;
 
-                    var thisHighCardRanks = this.GetSortedListOfCardValues();
-                    var otherHighCardRanks = other.GetSortedListOfCardValues();
+                    var thisHighCardRanks = this.GetSortedListOfCardFaces();
+                    var otherHighCardRanks = other.GetSortedListOfCardFaces();
                     for (int i = 0; i < thisHighCardRanks.Count; i++)
                     {
                         if (thisHighCardRanks[i] > otherHighCardRanks[i]) return 1;
@@ -323,62 +342,62 @@ namespace TexasHoldem
             return 0;
         }
 
-        public int GetValueOfMultiple(int multiple)
+        public CardFace GetFaceOfMultiple(int multiple)
         {
             for (int i = 0; i < HAND_SIZE; i++)
             {
                 var count = 0;
-                var value = cards[i].Value;
+                var face = cards[i].Face;
 
                 for (int j = 0; j < HAND_SIZE; j++)
                 {
-                    if (cards[i].Value == cards[j].Value) count++;
+                    if (cards[i].Face == cards[j].Face) count++;
                 }
 
-                if (count == multiple) return value;
+                if (count == multiple) return face;
             }
             return 0;
         }
 
-        public List<int> GetSortedListOfCardValues()
+        public List<CardFace> GetSortedListOfCardFaces()
         {
-            var values = new List<int>();
+            var faces = new List<CardFace>();
 
             foreach (var card in cards)
             {
-                values.Add(card.Value);
+                faces.Add(card.Face);
             }
 
-            values.Sort();
-            values.Reverse();
+            faces.Sort();
+            faces.Reverse();
 
-            return values;
+            return faces;
         }
         
-        public List<int> GetThreeOfAKindRanks()
+        public List<CardFace> GetThreeOfAKindRanks()
         {
-            var ranks = new List<int>();
+            var ranks = new List<CardFace>();
 
-            ranks.Add(GetValueOfMultiple(3));
+            ranks.Add(GetFaceOfMultiple(3));
 
-            var list = GetSortedListOfCardValues();
+            var list = GetSortedListOfCardFaces();
             list.Reverse();
 
             for (int i = 4; i >= 0; i--)
             {
-                if (list[i] != ranks[0]) ranks.Add(i);
+                if (list[i] != ranks[0]) ranks.Add((CardFace)i);
             }
 
             return ranks;
         }
 
-        public List<int> GetTwoPairRanks()
+        public List<CardFace> GetTwoPairRanks()
         {
-            var ranks = new List<int>();
+            var ranks = new List<CardFace>();
 
-            var value1 = 0;
-            var value2 = 0;
-            var kicker = 0;
+            var face1 = CardFace.Back;
+            var face2 = CardFace.Back;
+            var kicker = CardFace.Back;
 
             for (int i = 0; i < HAND_SIZE; i++)
             {
@@ -386,18 +405,18 @@ namespace TexasHoldem
                 {
                     if (i == j) continue;
 
-                    if (cards[i].Value == cards[j].Value)
+                    if (cards[i].Face == cards[j].Face)
                     {
-                        if (value1 == cards[i].Value || value2 == cards[i].Value) continue;
+                        if (face1 == cards[i].Face || face2 == cards[i].Face) continue;
 
-                        if (value1 == 0)
+                        if (face1 == 0)
                         {
-                            value1 = cards[i].Value;
+                            face1 = cards[i].Face;
                         }
 
-                        if (value2 == 0)
+                        if (face2 == 0)
                         {
-                            value2 = cards[i].Value;
+                            face2 = cards[i].Face;
                         }
                     }
                 }
@@ -405,34 +424,34 @@ namespace TexasHoldem
 
             foreach (var card in cards)
             {
-                if (card.Value != value1 && card.Value != value2) kicker = card.Value;
+                if (card.Face != face1 && card.Face != face2) kicker = card.Face;
             }
 
-            ranks.Add(value1);
-            ranks.Add(value2);
+            ranks.Add(face1);
+            ranks.Add(face2);
             ranks.Sort();
-            if (ranks[0] != 1) ranks.Reverse();
+            if (ranks[0] != CardFace.Back) ranks.Reverse();
             ranks.Add(kicker);
             return ranks;
         }
 
-        public List<int> GetOnePairRanks()
+        public List<CardFace> GetOnePairRanks()
         {
-            var pair = GetValueOfMultiple(2);
-            var ranks = new List<int>();
+            var pair = GetFaceOfMultiple(2);
+            var ranks = new List<CardFace>();
 
             foreach (var card in cards)
             {
-                if (card.Value != pair) ranks.Add(card.Value);
+                if (card.Face != pair) ranks.Add(card.Face);
             }
 
             ranks.Sort();
             ranks.Reverse();
 
-            if (ranks[ranks.Count - 1] == 1)
+            if (ranks[ranks.Count - 1] == CardFace.Ace)
             {
                 ranks.RemoveAt(ranks.Count - 1);
-                ranks.Insert(0, 1);
+                ranks.Insert(0, CardFace.Ace);
             }
 
             ranks.Insert(0, pair);
