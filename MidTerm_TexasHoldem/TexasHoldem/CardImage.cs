@@ -45,10 +45,15 @@ namespace TexasHoldem
             // Setup card images
             images = new Dictionary<CardSuit, Dictionary<CardFace, string>>();
 
+            images.Add(CardSuit.Invalid,  new Dictionary<CardFace, string>());
             images.Add(CardSuit.Clubs,    new Dictionary<CardFace, string>());
             images.Add(CardSuit.Diamonds, new Dictionary<CardFace, string>());
             images.Add(CardSuit.Hearts,   new Dictionary<CardFace, string>());
             images.Add(CardSuit.Spades,   new Dictionary<CardFace, string>());
+
+            // Invalid
+            // Should only ever contain cards with the CardFace.Back face.
+            images[CardSuit.Invalid].Add(CardFace.Back, "🂠");
 
             // Clubs
             images[CardSuit.Clubs].Add(CardFace.Back,  "🂠");

@@ -139,7 +139,7 @@ namespace TexasHoldem
             {
                 for (int j = i + 1; j < communityHand.Cards.Count - 1; j++)
                 {
-                    for (int k = j + 1; i < communityHand.Cards.Count; k++)
+                    for (int k = j + 1; k < communityHand.Cards.Count; k++)
                     {
                         var hand = new PokerHand();
 

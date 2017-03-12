@@ -281,6 +281,7 @@
             this.callButton.TabIndex = 0;
             this.callButton.Text = "Call";
             this.callButton.UseVisualStyleBackColor = true;
+            this.callButton.Click += new System.EventHandler(this.callButton_Click);
             // 
             // foldButton
             // 
@@ -292,6 +293,7 @@
             this.foldButton.TabIndex = 1;
             this.foldButton.Text = "Fold";
             this.foldButton.UseVisualStyleBackColor = true;
+            this.foldButton.Click += new System.EventHandler(this.foldButton_Click);
             // 
             // dealButton
             // 
@@ -302,6 +304,7 @@
             this.dealButton.TabIndex = 2;
             this.dealButton.Text = "Deal";
             this.dealButton.UseVisualStyleBackColor = true;
+            this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
             // 
             // restartButton
             // 
@@ -312,6 +315,7 @@
             this.restartButton.TabIndex = 3;
             this.restartButton.Text = "Restart";
             this.restartButton.UseVisualStyleBackColor = true;
+            this.restartButton.Click += new System.EventHandler(this.restartButton_Click);
             // 
             // totalPotLabel
             // 
@@ -378,9 +382,8 @@
             this.playerOddsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerOddsLabel.Location = new System.Drawing.Point(6, 78);
             this.playerOddsLabel.Name = "playerOddsLabel";
-            this.playerOddsLabel.Size = new System.Drawing.Size(106, 13);
+            this.playerOddsLabel.Size = new System.Drawing.Size(0, 13);
             this.playerOddsLabel.TabIndex = 5;
-            this.playerOddsLabel.Text = "Odds of Winning: 0%";
             // 
             // MainForm
             // 
@@ -393,7 +396,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.Text = "Texas Hold \'em";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
