@@ -11,6 +11,7 @@ namespace TexasHoldem
     {
         BeforeFirstDeal,
         DuringRound,
-        AfterRound
+        AfterRound,
+        GameOver
     }
 }

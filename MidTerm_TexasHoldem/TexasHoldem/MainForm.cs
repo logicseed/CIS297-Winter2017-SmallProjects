@@ -64,7 +64,8 @@ namespace TexasHoldem
         {
             RefreshCommunityCards(game.CommunityHand);
             RefreshPlayerCards(game.PlayerHand);
-            RefreshOpponentCards(game.OpponentHand,true);
+            var showOpponentHand = (game.State == GameState.AfterRound);
+            RefreshOpponentCards(game.OpponentHand, showOpponentHand);
             RefreshPotAndMoney();
 
             switch (game.State)
@@ -79,17 +80,24 @@ namespace TexasHoldem
 
                 case GameState.DuringRound:
                     outcomeLabel.Text = "";
-                    playerOddsLabel.Text = $"Odds of Winning: {game.PlayerOdds * 100}%";
+                    playerOddsLabel.Text = $"Odds of Winning: {game.PlayerOdds * 100:0.00}%";
                     callButton.Enabled = true;
                     foldButton.Enabled = true;
                     dealButton.Enabled = false;
                     break;
                 case GameState.AfterRound:
-                    outcomeLabel.Text = $"YOU WON!";
+                    outcomeLabel.Text = game.DealOutcome;
                     playerOddsLabel.Text = "";
                     callButton.Enabled = false;
                     foldButton.Enabled = false;
                     dealButton.Enabled = true;
+                    break;
+                case GameState.GameOver:
+                    outcomeLabel.Text = game.DealOutcome;
+                    playerOddsLabel.Text = "";
+                    callButton.Enabled = false;
+                    foldButton.Enabled = false;
+                    dealButton.Enabled = false;
                     break;
             }
             

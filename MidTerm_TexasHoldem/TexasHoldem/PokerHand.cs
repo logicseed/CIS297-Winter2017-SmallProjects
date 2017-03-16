@@ -217,11 +217,11 @@ namespace TexasHoldem
             var face1 = CardFace.Back;
             var face2 = CardFace.Back;
 
-            for (int i = 0; i < HAND_SIZE; i++)
+            for (int i = 0; i < HAND_SIZE - 1; i++)
             {
-                for(int j = 0; j < HAND_SIZE; j++)
+                for(int j = i + 1; j < HAND_SIZE; j++)
                 {
-                    if (i == j) continue;
+                    //if (i == j) continue;
 
                     if (cards[i].Face == cards[j].Face)
                     {
@@ -230,11 +230,13 @@ namespace TexasHoldem
                         if (face1 == CardFace.Back)
                         {
                             face1 = cards[i].Face;
+                            continue;
                         }
 
                         if (face2 == CardFace.Back)
                         {
                             face2 = cards[i].Face;
+                            continue;
                         }
                     }
 

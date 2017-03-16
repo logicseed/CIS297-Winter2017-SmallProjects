@@ -36,15 +36,15 @@ namespace TexasHoldem
                 result = -1;
             }
 
-            // Order by suit
-            if (Suit > other.Suit)
-            {
-                result = 1;
-            }
-            else if (Suit < other.Suit)
-            {
-                result = -1;
-            }
+            //// Order by suit
+            //if (Suit > other.Suit)
+            //{
+            //    result = 1;
+            //}
+            //else if (Suit < other.Suit)
+            //{
+            //    result = -1;
+            //}
 
             return result;
         }

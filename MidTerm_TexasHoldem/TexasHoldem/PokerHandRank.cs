@@ -10,14 +10,14 @@ namespace TexasHoldem
     public enum PokerHandRank
     {
         Invalid,
-        StraightFlush,
-        FourOfAKind,
-        FullHouse,
-        Flush,
-        Straight,
-        ThreeOfAKind,
-        TwoPair,
+        HighCard,
         OnePair,
-        HighCard
+        TwoPair,
+        ThreeOfAKind,
+        Straight,
+        Flush,
+        FullHouse,
+        FourOfAKind,
+        StraightFlush
     }
 }

@@ -42,19 +42,19 @@
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.callButton = new System.Windows.Forms.Button();
-            this.foldButton = new System.Windows.Forms.Button();
-            this.dealButton = new System.Windows.Forms.Button();
-            this.restartButton = new System.Windows.Forms.Button();
-            this.totalPotLabel = new System.Windows.Forms.Label();
-            this.playerPotLabel = new System.Windows.Forms.Label();
-            this.opponentPotLabel = new System.Windows.Forms.Label();
-            this.playerMoneyLabel = new System.Windows.Forms.Label();
-            this.opponentMoneyLabel = new System.Windows.Forms.Label();
             this.outcomeLabel = new System.Windows.Forms.Label();
+            this.opponentPotLabel = new System.Windows.Forms.Label();
+            this.playerPotLabel = new System.Windows.Forms.Label();
+            this.totalPotLabel = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.playerOddsLabel = new System.Windows.Forms.Label();
+            this.opponentMoneyLabel = new System.Windows.Forms.Label();
+            this.playerMoneyLabel = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.restartButton = new System.Windows.Forms.Button();
+            this.dealButton = new System.Windows.Forms.Button();
+            this.foldButton = new System.Windows.Forms.Button();
+            this.callButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -210,6 +210,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.outcomeLabel);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
@@ -232,7 +233,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.outcomeLabel);
             this.groupBox2.Controls.Add(this.opponentPotLabel);
             this.groupBox2.Controls.Add(this.playerPotLabel);
             this.groupBox2.Controls.Add(this.totalPotLabel);
@@ -243,6 +243,47 @@
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pot";
+            // 
+            // outcomeLabel
+            // 
+            this.outcomeLabel.AutoSize = true;
+            this.outcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outcomeLabel.Location = new System.Drawing.Point(193, 316);
+            this.outcomeLabel.Name = "outcomeLabel";
+            this.outcomeLabel.Size = new System.Drawing.Size(169, 13);
+            this.outcomeLabel.TabIndex = 3;
+            this.outcomeLabel.Text = "YOU WIN! THEY\'RE BROKE";
+            this.outcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // opponentPotLabel
+            // 
+            this.opponentPotLabel.AutoSize = true;
+            this.opponentPotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opponentPotLabel.Location = new System.Drawing.Point(7, 59);
+            this.opponentPotLabel.Name = "opponentPotLabel";
+            this.opponentPotLabel.Size = new System.Drawing.Size(72, 13);
+            this.opponentPotLabel.TabIndex = 2;
+            this.opponentPotLabel.Text = "Opponent: $0";
+            // 
+            // playerPotLabel
+            // 
+            this.playerPotLabel.AutoSize = true;
+            this.playerPotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerPotLabel.Location = new System.Drawing.Point(7, 40);
+            this.playerPotLabel.Name = "playerPotLabel";
+            this.playerPotLabel.Size = new System.Drawing.Size(54, 13);
+            this.playerPotLabel.TabIndex = 1;
+            this.playerPotLabel.Text = "Player: $0";
+            // 
+            // totalPotLabel
+            // 
+            this.totalPotLabel.AutoSize = true;
+            this.totalPotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalPotLabel.Location = new System.Drawing.Point(7, 20);
+            this.totalPotLabel.Name = "totalPotLabel";
+            this.totalPotLabel.Size = new System.Drawing.Size(49, 13);
+            this.totalPotLabel.TabIndex = 0;
+            this.totalPotLabel.Text = "Total: $0";
             // 
             // groupBox3
             // 
@@ -256,6 +297,35 @@
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Money";
+            // 
+            // playerOddsLabel
+            // 
+            this.playerOddsLabel.AutoSize = true;
+            this.playerOddsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerOddsLabel.Location = new System.Drawing.Point(6, 78);
+            this.playerOddsLabel.Name = "playerOddsLabel";
+            this.playerOddsLabel.Size = new System.Drawing.Size(0, 13);
+            this.playerOddsLabel.TabIndex = 5;
+            // 
+            // opponentMoneyLabel
+            // 
+            this.opponentMoneyLabel.AutoSize = true;
+            this.opponentMoneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opponentMoneyLabel.Location = new System.Drawing.Point(6, 40);
+            this.opponentMoneyLabel.Name = "opponentMoneyLabel";
+            this.opponentMoneyLabel.Size = new System.Drawing.Size(84, 13);
+            this.opponentMoneyLabel.TabIndex = 4;
+            this.opponentMoneyLabel.Text = "Opponent: $100";
+            // 
+            // playerMoneyLabel
+            // 
+            this.playerMoneyLabel.AutoSize = true;
+            this.playerMoneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerMoneyLabel.Location = new System.Drawing.Point(6, 20);
+            this.playerMoneyLabel.Name = "playerMoneyLabel";
+            this.playerMoneyLabel.Size = new System.Drawing.Size(66, 13);
+            this.playerMoneyLabel.TabIndex = 3;
+            this.playerMoneyLabel.Text = "Player: $100";
             // 
             // groupBox4
             // 
@@ -271,17 +341,27 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Actions";
             // 
-            // callButton
+            // restartButton
             // 
-            this.callButton.Enabled = false;
-            this.callButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.callButton.Location = new System.Drawing.Point(7, 20);
-            this.callButton.Name = "callButton";
-            this.callButton.Size = new System.Drawing.Size(110, 33);
-            this.callButton.TabIndex = 0;
-            this.callButton.Text = "Call";
-            this.callButton.UseVisualStyleBackColor = true;
-            this.callButton.Click += new System.EventHandler(this.callButton_Click);
+            this.restartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.restartButton.Location = new System.Drawing.Point(125, 59);
+            this.restartButton.Name = "restartButton";
+            this.restartButton.Size = new System.Drawing.Size(113, 35);
+            this.restartButton.TabIndex = 3;
+            this.restartButton.Text = "Restart";
+            this.restartButton.UseVisualStyleBackColor = true;
+            this.restartButton.Click += new System.EventHandler(this.restartButton_Click);
+            // 
+            // dealButton
+            // 
+            this.dealButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dealButton.Location = new System.Drawing.Point(125, 19);
+            this.dealButton.Name = "dealButton";
+            this.dealButton.Size = new System.Drawing.Size(113, 34);
+            this.dealButton.TabIndex = 2;
+            this.dealButton.Text = "Deal";
+            this.dealButton.UseVisualStyleBackColor = true;
+            this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
             // 
             // foldButton
             // 
@@ -295,95 +375,17 @@
             this.foldButton.UseVisualStyleBackColor = true;
             this.foldButton.Click += new System.EventHandler(this.foldButton_Click);
             // 
-            // dealButton
+            // callButton
             // 
-            this.dealButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dealButton.Location = new System.Drawing.Point(125, 19);
-            this.dealButton.Name = "dealButton";
-            this.dealButton.Size = new System.Drawing.Size(113, 34);
-            this.dealButton.TabIndex = 2;
-            this.dealButton.Text = "Deal";
-            this.dealButton.UseVisualStyleBackColor = true;
-            this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
-            // 
-            // restartButton
-            // 
-            this.restartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.restartButton.Location = new System.Drawing.Point(125, 59);
-            this.restartButton.Name = "restartButton";
-            this.restartButton.Size = new System.Drawing.Size(113, 35);
-            this.restartButton.TabIndex = 3;
-            this.restartButton.Text = "Restart";
-            this.restartButton.UseVisualStyleBackColor = true;
-            this.restartButton.Click += new System.EventHandler(this.restartButton_Click);
-            // 
-            // totalPotLabel
-            // 
-            this.totalPotLabel.AutoSize = true;
-            this.totalPotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPotLabel.Location = new System.Drawing.Point(7, 20);
-            this.totalPotLabel.Name = "totalPotLabel";
-            this.totalPotLabel.Size = new System.Drawing.Size(49, 13);
-            this.totalPotLabel.TabIndex = 0;
-            this.totalPotLabel.Text = "Total: $0";
-            // 
-            // playerPotLabel
-            // 
-            this.playerPotLabel.AutoSize = true;
-            this.playerPotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerPotLabel.Location = new System.Drawing.Point(7, 40);
-            this.playerPotLabel.Name = "playerPotLabel";
-            this.playerPotLabel.Size = new System.Drawing.Size(54, 13);
-            this.playerPotLabel.TabIndex = 1;
-            this.playerPotLabel.Text = "Player: $0";
-            // 
-            // opponentPotLabel
-            // 
-            this.opponentPotLabel.AutoSize = true;
-            this.opponentPotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opponentPotLabel.Location = new System.Drawing.Point(7, 59);
-            this.opponentPotLabel.Name = "opponentPotLabel";
-            this.opponentPotLabel.Size = new System.Drawing.Size(72, 13);
-            this.opponentPotLabel.TabIndex = 2;
-            this.opponentPotLabel.Text = "Opponent: $0";
-            // 
-            // playerMoneyLabel
-            // 
-            this.playerMoneyLabel.AutoSize = true;
-            this.playerMoneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerMoneyLabel.Location = new System.Drawing.Point(6, 20);
-            this.playerMoneyLabel.Name = "playerMoneyLabel";
-            this.playerMoneyLabel.Size = new System.Drawing.Size(66, 13);
-            this.playerMoneyLabel.TabIndex = 3;
-            this.playerMoneyLabel.Text = "Player: $100";
-            // 
-            // opponentMoneyLabel
-            // 
-            this.opponentMoneyLabel.AutoSize = true;
-            this.opponentMoneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opponentMoneyLabel.Location = new System.Drawing.Point(6, 40);
-            this.opponentMoneyLabel.Name = "opponentMoneyLabel";
-            this.opponentMoneyLabel.Size = new System.Drawing.Size(84, 13);
-            this.opponentMoneyLabel.TabIndex = 4;
-            this.opponentMoneyLabel.Text = "Opponent: $100";
-            // 
-            // outcomeLabel
-            // 
-            this.outcomeLabel.AutoSize = true;
-            this.outcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outcomeLabel.Location = new System.Drawing.Point(7, 78);
-            this.outcomeLabel.Name = "outcomeLabel";
-            this.outcomeLabel.Size = new System.Drawing.Size(0, 13);
-            this.outcomeLabel.TabIndex = 3;
-            // 
-            // playerOddsLabel
-            // 
-            this.playerOddsLabel.AutoSize = true;
-            this.playerOddsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerOddsLabel.Location = new System.Drawing.Point(6, 78);
-            this.playerOddsLabel.Name = "playerOddsLabel";
-            this.playerOddsLabel.Size = new System.Drawing.Size(0, 13);
-            this.playerOddsLabel.TabIndex = 5;
+            this.callButton.Enabled = false;
+            this.callButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.callButton.Location = new System.Drawing.Point(7, 20);
+            this.callButton.Name = "callButton";
+            this.callButton.Size = new System.Drawing.Size(110, 33);
+            this.callButton.TabIndex = 0;
+            this.callButton.Text = "Call";
+            this.callButton.UseVisualStyleBackColor = true;
+            this.callButton.Click += new System.EventHandler(this.callButton_Click);
             // 
             // MainForm
             // 

@@ -17,7 +17,7 @@ namespace TexasHoldem
     {
         public const int STARTING_MONEY = 100;
         public const int BET_AMOUNT = 5;
-        public const int POSSIBLE_OPPONENT_HANDS = 2227500;
+        public const int POSSIBLE_OPPONENT_HANDS = 990;
 
         private GameState state = GameState.BeforeFirstDeal;
         public GameState State { get => state; }
@@ -54,8 +54,6 @@ namespace TexasHoldem
         private string dealOutcome = "";
         public string DealOutcome { get => dealOutcome; }
 
-        private int tempCombiCount = 0;
-
         public TexasHoldemManager()
         {
 
@@ -86,13 +84,13 @@ namespace TexasHoldem
             opponentPot += BET_AMOUNT;
 
             // Calculate odds
-            var playerBestHand = PokerHandCombinations.GeneratePotentialHands(communityHand, playerHand)[0];
-            playerOdds = CalculateOdds(playerBestHand, playerHand);
+            var playerBestHand = PokerHandCombinations.FindBestHand(communityHand, playerHand);
+            playerOdds = CalculateOdds(playerBestHand, opponentHand);
 
-            var opponentBestHand = PokerHandCombinations.GeneratePotentialHands(communityHand, opponentHand)[0];
-            opponentOdds = CalculateOdds(opponentBestHand, opponentHand);
+            var opponentBestHand = PokerHandCombinations.FindBestHand(communityHand, opponentHand);
+            opponentOdds = CalculateOdds(opponentBestHand, playerHand);
 
-            state = GameState.DuringRound;
+            CheckForGameOver(GameState.DuringRound);
 
             if (opponentOdds >= 0.5f)
             {
@@ -108,25 +106,78 @@ namespace TexasHoldem
         private float CalculateOdds(PokerHand bestHand, PokerHand holeHand)
         {
             var bestHandRank = 0;
-            var remainingHands = PokerHandCombinations.GenerateRemainingHands(communityHand, holeHand);
-            tempCombiCount = remainingHands.Count;
+            var remainingHands = PokerHandCombinations.GenerateBestHands(communityHand, holeHand);
 
             foreach (var hand in remainingHands)
             {
                 bestHandRank += bestHand.CompareTo(hand);
             }
-            return (((POSSIBLE_OPPONENT_HANDS / 2) + bestHandRank) / (float)POSSIBLE_OPPONENT_HANDS);
+
+            return (((POSSIBLE_OPPONENT_HANDS + bestHandRank) / 2) / (float)POSSIBLE_OPPONENT_HANDS);
         }
 
         public void Call()
         {
+            playerMoney -= BET_AMOUNT;
+            playerPot += BET_AMOUNT;
 
-            state = GameState.AfterRound;
+            var playerBestHand = PokerHandCombinations.FindBestHand(communityHand, playerHand);
+            var opponentBestHand = PokerHandCombinations.FindBestHand(communityHand, opponentHand);
+
+            var call = playerBestHand.CompareTo(opponentBestHand);
+            if (call == -1)
+            {
+                dealOutcome = "YOU LOSE!";
+                opponentMoney += opponentPot + playerPot;
+                opponentPot = playerPot = 0;
+            }
+            else if (call == 0)
+            {
+                dealOutcome = "IT'S A TIE!";
+            }
+            else if (call == 1)
+            {
+                dealOutcome = "YOU WIN!";
+                playerMoney += opponentPot + playerPot;
+                opponentPot = playerPot = 0;
+            }
+
+            CheckForGameOver(GameState.AfterRound);
         }
 
         public void Fold(bool playerFolded = false)
         {
-            state = GameState.AfterRound;
+            if (playerFolded)
+            {
+                dealOutcome = "YOU LOSE! YOU FOLDED!";
+                opponentMoney += opponentPot + playerPot;
+            }
+            else
+            {
+                dealOutcome = "YOU WIN! THEY FOLDED!";
+                playerMoney += opponentPot + playerPot;
+            }
+            opponentPot = playerPot = 0;
+
+            CheckForGameOver(GameState.AfterRound);
+        }
+
+        private void CheckForGameOver(GameState nextState)
+        {
+            if (playerMoney <= 0)
+            {
+                dealOutcome = "YOU RAN OUT OF MONEY!";
+                state = GameState.GameOver;
+            }
+            else if (opponentMoney <= 0)
+            {
+                dealOutcome = "YOU WIN! THEY'RE BROKE!";
+                state = GameState.GameOver;
+            }
+            else
+            {
+                state = nextState;
+            }
         }
     }
 }
