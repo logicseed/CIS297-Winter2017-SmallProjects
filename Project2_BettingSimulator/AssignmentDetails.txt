@@ -1,0 +1,52 @@
+﻿You may do the project in pairs - please let me know if you pair up so I can enable access to your repositories
+
+Create a branch called Project2, commit your code to that branch ( early and often ), and when you 
+are COMPLETE, create a pull request and submit the URL.
+
+Write a GUI interface program to let users simulate various bets. It should track their winnings losses
+
+Using generics, write a class allows a user to bet on various wagers of type T that implements IComparable
+
+First implementation is PowerBall - http://www.powerball.com/powerball/pb_prizes.asp 
+(Links to an external site.) - just compare and see if you win the grand prize
+
+Second implementation is Racing Horses - fastest horse will win - have a list of horses to pick 
+from, if it's the fastest you win, if not, you lose money ( make horses have random speeds so the 
+same one doesn't always win )
+
+Third implementation is Poker style - https://en.wikipedia.org/wiki/List_of_poker_hands 
+(Links to an external site.) ( class should be a hand of 5 cards )
+
+The classes must be tested with unit tests as well.
+
+
+
+
+Rubric
+
+PowerBall Implementation
+PowerBall Tests
+Horse Racing Implementation
+Horse Racing Tests
+Poker Implementation
+Poker tests
+Tracks net win/loss
+User Interface
+Branch
+Commit
+Pull Request
+Uses Generic type to share logic
+
+
+
+
+
+
+
+
+
+🂠
+🂡🂢🂣🂤🂥🂦🂧🂨🂩🂪🂫🂬🂭🂮	
+🂱🂲🂳🂴🂵🂶🂷🂸🂹🂺🂻🂼🂽🂾🂿
+🃁🃂🃃🃄🃅🃆🃇🃈🃉🃊🃋🃌🃍🃎🃏
+🃑🃒🃓🃔🃕🃖🃗🃘🃙🃚🃛🃜🃝🃞🃟
